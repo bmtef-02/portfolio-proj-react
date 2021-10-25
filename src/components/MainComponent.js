@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from './HeaderComponent'
-import HeaderNoLogin from './HeaderNoLoginComponent';
+import HeaderConditional from './HeaderConditionalComponent';
 import SearchResult from './SearchResultComponent';
 import Project from './ProjectComponent';
 import Search from './SearchComponent';
@@ -30,7 +29,7 @@ class Main extends Component {
         }
         return(
             <div>
-                <HeaderNoLogin />
+                <HeaderConditional />
                 <Switch>
                     <Route exact path="/" component={Search} />
                     <Route path='/home' component={Search}/>

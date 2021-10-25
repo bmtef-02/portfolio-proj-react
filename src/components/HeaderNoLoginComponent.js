@@ -12,7 +12,7 @@ class HeaderNoLogin extends Component {
 
         this.state = {
             isNavOpen: false,
-            isModalOpen: false
+            isModalOpen: false,
         };
 
         this.toggleNav = this.toggleNav.bind(this);
@@ -33,13 +33,13 @@ class HeaderNoLogin extends Component {
     }
 
     handleLogin(event) {
-        alert(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
+        console.log(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
         this.toggleModal();
         event.preventDefault();
     }
 
     render() {
-        
+
         return(
             <React.Fragment>
                 <Navbar light sticky="top" expand="md">
@@ -93,7 +93,7 @@ class HeaderNoLogin extends Component {
                                     Remember Me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
+                            <Button onClick={this.props.onClick} type="submit" value="submit" color="primary">Login</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
