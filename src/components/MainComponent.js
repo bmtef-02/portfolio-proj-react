@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './HeaderComponent'
+import HeaderNoLogin from './HeaderNoLoginComponent';
 import SearchResult from './SearchResultComponent';
 import Project from './ProjectComponent'
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -27,7 +28,7 @@ class Main extends Component {
         }
         return(
             <div>
-                <Header />
+                <HeaderNoLogin />
                 <Switch>
                     <Route path='/search-results' render={() => <SearchResult projects={this.state.projects} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />
