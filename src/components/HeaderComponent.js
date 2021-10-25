@@ -36,9 +36,6 @@ class Header extends Component {
                                 <NavItem>
                                     <NavLink className="nav-link" to="/create-a-project"> Create a Project</NavLink>
                                 </NavItem>
-                                <NavItem>
-                                    <NavLink className="nav-link" to="/search-results"> Search Results</NavLink>
-                                </NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle nav caret>
                                         <img src="/assets/images/mike.jpg" width="30" className="rounded-circle" /> <Badge color="success">4</Badge>

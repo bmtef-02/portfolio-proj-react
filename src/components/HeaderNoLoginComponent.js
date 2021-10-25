@@ -59,9 +59,6 @@ class HeaderNoLogin extends Component {
                             <NavItem>
                                 <NavLink className="nav-link" to="/"> Explore</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to="/search-results"> Search Results</NavLink>
-                            </NavItem>
                         </Nav>
                         <span className="navbar-text">
                             <Button outline onClick={this.toggleModal}>
