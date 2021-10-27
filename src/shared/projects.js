@@ -8,7 +8,8 @@ export const PROJECTS = [
         category: 'Game',
         experience: '5 years',
         time: '<5 hours',
-        owner_id: 0,
+        owner_id: 1,
+        team_id: [0]
     },
     {
         id: 1,
@@ -19,7 +20,7 @@ export const PROJECTS = [
         category: 'Game' ,
         experience: '1-2 years',
         time: '5-10 hours',
-        owner_id: 0,
+        owner_id: 1,
     },
     {
         id: 2,
@@ -30,7 +31,7 @@ export const PROJECTS = [
         category: 'Game',
         experience: '10+ years',
         time: '10-20 hours',
-        owner_id: 0,
+        owner_id: 1,
     },
     {
         id: 3,
@@ -41,7 +42,7 @@ export const PROJECTS = [
         category: 'Game',
         experience: '1-5 years',
         time: '20-40 hours',
-        owner_id: 0,
+        owner_id: 1,
     },
     {
         id: 4,

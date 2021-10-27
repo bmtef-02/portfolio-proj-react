@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitle } from 'reactstrap';
 
-function Project({project}) {
+function Project({project, users}) {
+    const owner = users.filter(user=>project.owner_id === user.id)[0];
+    console.log(owner)
         return(
             <div>
                 <div className="container-fluid">
@@ -49,8 +51,8 @@ function Project({project}) {
                             <Card>
                                 <CardTitle>Project Owner</CardTitle>
                                 <CardBody>
-                                    <img src="img/mike.jpg" class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
-                                    <h5 class="mt-3 card-title"></h5>
+                                    <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
+                                    <h5 class="mt-3 card-title">{owner.name}</h5>
                                     <a href="#" class="text-decoration-none"></a>
                                 </CardBody>
                             </Card>

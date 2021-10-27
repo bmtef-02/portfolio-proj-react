@@ -21,10 +21,11 @@ class Main extends Component {
 
     render() {
         const ProjectWithId = ({match}) => {
-
+                console.log(match)
             return(
                 <Project 
                 project={this.state.projects.filter(project => project.id === +match.params.projectId)[0]}
+                users={this.state.users}
                 />
                 
             )
