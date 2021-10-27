@@ -4,7 +4,16 @@ import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitl
 
 function Project({project, users}) {
     const owner = users.filter(user=>project.owner_id === user.id)[0];
-    console.log(owner)
+    const team_ids = project.team_id
+    const team = [];
+    for (let i=0; i<team_ids.length; i++) {
+        for (let j=0; j<users.length; j++) {
+            if (team_ids[i] === users[j].id) {
+                team.push(users[j]);
+            } 
+        }
+    }
+
         return(
             <div>
                 <div className="container-fluid">
@@ -48,16 +57,19 @@ function Project({project, users}) {
                             </Card>
                         </div>
                         <div className="col-md-4">
-                            <Card>
-                                <CardTitle>Project Owner</CardTitle>
+                            <Card className="shadow-sm text-center mt-md-5">
+                                
                                 <CardBody>
-                                    <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
-                                    <h5 class="mt-3 card-title">{owner.name}</h5>
-                                    <a href="#" class="text-decoration-none"></a>
+                                        <h3>Project Owner</h3>
+                                        <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
+                                        <h5 class="mt-3 card-title">{owner.name}</h5>
+                                        <a href="#" class="text-decoration-none">@{owner.username}</a>
                                 </CardBody>
+                                
                             </Card>
-                            <div class="card shadow-sm mt-3">
-                                <h5 class="card-header">Project Team</h5>
+                            <Card className="shadow-sm text-left mt-2">
+                                <h3 className="text-center">Project Team</h3>
+                                    <ProjectTeam team={team} />
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <div class="d-inline align-middle project-member">
@@ -83,12 +95,31 @@ function Project({project, users}) {
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
+                            </Card>
                         </div>
                     </div>
                 </div>
             </div>
         )
+}
+
+function ProjectTeam({team}) {
+    const group = team.map(team => {
+        return (
+            <h1>{team.name}</h1>
+        )
+    })
+        return (
+            <h1>{group}</h1>
+    )
+    
+//     
+            
+//         )
+//     }) 
+//     return(
+//             {team_member}
+//     )
 }
 
 

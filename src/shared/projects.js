@@ -21,6 +21,7 @@ export const PROJECTS = [
         experience: '1-2 years',
         time: '5-10 hours',
         owner_id: 1,
+        team_id: [0, 1, 17, 18]
     },
     {
         id: 2,
@@ -55,5 +56,6 @@ export const PROJECTS = [
         time: '40+ hours',
         owner_id: 0,
     },
-]
 
+
+]

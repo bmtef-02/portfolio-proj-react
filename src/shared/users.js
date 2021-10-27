@@ -11,4 +11,10 @@ export const USERS = [
         username: 'bjun',
         user_img: '/assets/images/brian.png'
     },
+    {
+        id: 17,
+        name: 'Sylvia Seo',
+        username: 'sseo',
+        user_img: '/assets/images/brian.png'
+    },
 ]
