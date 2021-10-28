@@ -64,6 +64,45 @@ export const PROJECTS = [
         team_id: [2,4],
         team_size: 3
     },
+    {
+        id: 5,
+        title: 'NFT / Blockchain Developer',
+        description: 'Understanding of NFTs and Blockchain Technology. Strong visual design skills and experience shaping and preparing images for web. Ensure the proper creative execution of NFT assets. Connect dots between content and technical delivery. Help develop, define, and oversee  NFT product roadmap. Create, maintain, and socialize product concepts and roadmaps. Build requirements and research new features',
+        img: 'img/...',
+        languages: ['Javascript'],
+        category: 'Crypto',
+        experience: '5-10 years',
+        time: '<5 hours',
+        owner_id: 1,
+        team_id: [0,3,4,5,2],
+        team_size: 7
+    },
+    {
+        id: 6,
+        title: 'Script to upload folder to AWS S3 Accelerate transfer',
+        description: 'Hello, I need a script to upload a folder to Amazon S3 with accelerate transfer from my computer. I am not a coder so I need the script and the instructions to run it. It needs to be done within half an hour.',
+        img: 'img/...',
+        languages: ['Javascript', 'Python'],
+        category: 'Automation',
+        experience: '10+ years',
+        time: '10-20 hours',
+        owner_id: 3,
+        team_id: [2,4,5,1],
+        team_size: 4
+    },
+    {
+        id: 7,
+        title: 'Slideshow Animation for Website',
+        description: 'We have a website (MotifiquePreview.com) and we would like our home page images automatically transition. Please let us know how much this would cost.',
+        img: 'img/...',
+        languages: ['Javascript', 'CSS', 'HTML5', 'PHP'],
+        category: 'Web Design',
+        experience: '10-20 years',
+        time: '5-10 hours',
+        owner_id: 5,
+        team_id: [0,1,3],
+        team_size: 6
+    },
 
 
 ]
