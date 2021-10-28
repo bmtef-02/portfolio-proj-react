@@ -9,7 +9,8 @@ export const PROJECTS = [
         experience: '5 years',
         time: '<5 hours',
         owner_id: 1,
-        team_id: [0]
+        team_id: [],
+        team_size: 6,
     },
     {
         id: 1,
@@ -21,7 +22,8 @@ export const PROJECTS = [
         experience: '1-2 years',
         time: '5-10 hours',
         owner_id: 1,
-        team_id: [0, 1, 17, 18]
+        team_id: [0, 1, 3],
+        team_size: 4
     },
     {
         id: 2,
@@ -33,6 +35,8 @@ export const PROJECTS = [
         experience: '10+ years',
         time: '10-20 hours',
         owner_id: 1,
+        team_id:[2],
+        team_size: 3
     },
     {
         id: 3,
@@ -44,6 +48,8 @@ export const PROJECTS = [
         experience: '1-5 years',
         time: '20-40 hours',
         owner_id: 1,
+        team_id: [2,4],
+        team_size: 2
     },
     {
         id: 4,
@@ -55,6 +61,8 @@ export const PROJECTS = [
         experience: '<1 years',
         time: '40+ hours',
         owner_id: 0,
+        team_id: [2,4],
+        team_size: 3
     },
 
 
