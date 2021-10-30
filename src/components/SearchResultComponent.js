@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Search from './SearchComponent';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
 import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Col, Row, Badge } from 'reactstrap';
@@ -43,7 +42,7 @@ function SearchResult(props) {
     // This function maps through the PROJECTS array and passes each object to SearchResultItem
     const projects = props.projects.map(project => {
         return (
-            <div key={project.id} className="col-md-3">
+            <div key={project.id} className="col-xl-3 col-md-4 col-6">
                 <SearchResultItem project={project} />
             </div>
         )

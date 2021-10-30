@@ -1,34 +1,16 @@
 import React, { Component } from 'react';
 import { Jumbotron,
-    Container, Row, Col,
-    Navbar, Nav, NavItem, NavbarToggler, Collapse  } from 'reactstrap';
+    Container, Row, Col  } from 'reactstrap';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
     
 
 class Home extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isNavOpen: false
-        }
-
-        this.toggleNav = this.toggleNav.bind(this);
-    }
-
-    // This function will toggle isNavOpen to the opposite of it's value when called
-    toggleNav() {
-        this.setState({
-            isNavOpen: !this.state.isNavOpen
-        });
-    }
-
     render() {
         return(
             <React.Fragment>
-                <Jumbotron fluid className="mb-0">
+                <Jumbotron fluid className="mb-5">
                     <div className="container">
                         <div className="row">
                             <div className="col">

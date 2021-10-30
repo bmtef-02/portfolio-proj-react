@@ -8,7 +8,6 @@
 
 /* This class centers the SearchBar and SearchFilter on the homepage */
 .center {
-  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,4 +23,20 @@
 .scroll {
   height: 400px;
   overflow-y: auto;
+}
+
+/* This makes the search filters expand the entier width. Due to Navbar, without this class, the search filters get pushed left */
+.search-filters {
+  display: flex;
+  width: 100%;
+  align-content: flex-start;
+}
+
+/* This class lines the toggler icon with the search bar */
+.search-filter-toggler {
+  margin-left: 30px;
+}
+
+.test {
+  align-items: flex-start;
 }
