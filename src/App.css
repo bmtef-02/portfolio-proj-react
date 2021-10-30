@@ -1,3 +1,6 @@
+.search-result {
+    height: 200px;
+}
 .site-footer {
     background: rgba(255,202,181,1);
     padding: 20px 0;

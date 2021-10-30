@@ -23,7 +23,9 @@ class Header extends Component {
             <React.Fragment>
                 <Navbar light sticky="top" expand="md" className="bg-white">
                     <div className="container-fluid">
-                        <NavbarBrand className="mr-auto" href="/"><img src="/assets/images/logoipsum-logo-7.svg" alt="Logo"/> </NavbarBrand>
+                        <NavbarBrand className="mr-auto" href="/">
+                            <img src="/assets/images/logoipsum-logo-7.svg" alt="Logo"/> 
+                        </NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav className="ml-auto" navbar>

@@ -4,7 +4,24 @@ import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitl
 
 function Project({project, users}) {
     const owner = users.filter(user=>project.owner_id === user.id)[0];
-    console.log(owner)
+    const team_ids = project.team_id
+    const team = [];
+    for (let i=0; i<team_ids.length; i++) {
+        for (let j=0; j<users.length; j++) {
+            if (team_ids[i] === users[j].id) {
+                team.push(users[j]);
+            } 
+        }
+    }
+    const open_spots = project.team_size - team.length;
+    const unoccupied = [];
+    if (open_spots > 0) {
+        for (let i=0; i < open_spots; i++) {
+            unoccupied.push('Open');
+        }
+    }
+
+    console.log(project.languages)
         return(
             <div>
                 <div className="container-fluid">
@@ -23,9 +40,7 @@ function Project({project, users}) {
                                     <CardTitle>Languages</CardTitle>
                                     <CardText>
                                         <ul className="list-group list-group-flush">
-                                            <li className="list-group-item">JavaScript</li>
-                                            <li className="list-group-item">HTML</li>
-                                            <li className="list-group-item">CSS</li>
+                                            <Languages lang={project.languages} />
                                         </ul>
                                     </CardText>
                                 </CardBody>
@@ -48,42 +63,23 @@ function Project({project, users}) {
                             </Card>
                         </div>
                         <div className="col-md-4">
-                            <Card>
-                                <CardTitle>Project Owner</CardTitle>
+                            <Card className="shadow-sm text-center mt-md-5">
+                                
                                 <CardBody>
-                                    <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
-                                    <h5 class="mt-3 card-title">{owner.name}</h5>
-                                    <a href="#" class="text-decoration-none"></a>
+                                        <h3>Project Owner</h3>
+                                        <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
+                                        <h5 class="mt-3 card-title">{owner.name}</h5>
+                                        <a href="#" class="text-decoration-none">@{owner.username}</a>
                                 </CardBody>
+                                
                             </Card>
-                            <div class="card shadow-sm mt-3">
-                                <h5 class="card-header">Project Team</h5>
+                            <Card className="shadow-sm text-left mt-2">
+                                <h3 className="text-center">Project Team (Spots: {project.team_size})</h3>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        <div class="d-inline align-middle project-member">
-                                            <h5 class="d-inline">1.</h5>
-                                            <a href="#" class="text-decoration-none">
-                                                <img src="img/brian.png" width="30" class="img-fluid rounded-circle" alt="" />
-                                                <span class="d-inline ml-1">Brian Jun</span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="d-inline align-middle project-member">
-                                            <h5 class="d-inline">2.</h5>
-                                            <span class="d-inline"> Open</span>
-                                            <button class="btn btn-success ml-2">Join Team</button>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <div class="d-inline align-middle project-member">
-                                            <h5 class="d-inline">3.</h5>
-                                            <span class="d-inline"> Open</span>
-                                            <button class="btn btn-success ml-2">Join Team</button>
-                                        </div>
-                                    </li>
+                                    <ProjectTeam team={team} />
+                                    <Open unoccupied={unoccupied} />
                                 </ul>
-                            </div>
+                            </Card>
                         </div>
                     </div>
                 </div>
@@ -91,5 +87,55 @@ function Project({project, users}) {
         )
 }
 
+function ProjectTeam({team}) {
+    const group = team.map(team => {
+        return (
+            <div>
+                <li class="list-group-item">
+                    <div class="d-inline align-middle project-member">
+                        <a href="#" class="text-decoration-none">
+                            <img src={team.user_img} width="30" class="img-fluid rounded-circle" alt="" />
+                            <span class="d-inline ml-1">{team.name}</span>
+                        </a>
+                    </div>
+                </li>
+            </div>
+        )
+    })
+        return (
+            <div>
+                {group}
+            </div>
+    )
+}
+
+function Open({unoccupied}) {
+    const op = unoccupied.map((spot) =>
+        <li class="list-group-item">
+            <div class="d-inline align-middle project-member">
+                <span class="d-inline ml-1">{spot}</span>
+                <button class="btn btn-success ml-2">Join Team</button>
+            </div>
+        </li>
+);
+
+        return (
+            <div>
+                {op}
+            </div>
+        )
+}
+
+function Languages({lang}) {
+    const la = lang.map((lang) =>
+        <li className="list-group-item">{lang}</li>
+);
+
+    return (
+        <div>
+            {la}
+        </div>
+    )
+}
 
 export default Project
