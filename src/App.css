@@ -1,10 +1,24 @@
-<<<<<<< HEAD
-.search-result {
-    height: 200px;
-}
-=======
 .site-footer {
     background: rgba(255,202,181,1);
     padding: 20px 0;
   }
->>>>>>> a99be34fedbf6f0f2c49b95811783974a48b8dae
+
+/* This class centers the SearchBar and SearchFilter on the homepage */
+.center {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* This class removes left and right margins on the SearchBar and SearchFilter on the search results page */
+.remove-margin {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* This class sets the height of each Card and makes it scrollable */
+.scroll {
+  height: 400px;
+  overflow-y: auto;
+}

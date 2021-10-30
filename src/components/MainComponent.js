@@ -31,27 +31,21 @@ class Main extends Component {
             )
         }
         return(
-            <div>
+            <React.Fragment>
                 <HeaderConditional />
                 <Switch>
                     <Route exact path='/' render={() =>
-                        <div>
                             <Home />
-                            <Search />
-                        </div>
                         } />
                     <Route exact path='/home' render={() =>
-                        <div>
                             <Home />
-                            <Search />
-                        </div>
                         } />
                     <Route path='/search-results' render={() => <SearchResult projects={this.state.projects} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />
                     <Route path='/create-a-project' component={Create} />
                 </Switch>
                 <Footer />
-            </div>
+            </React.Fragment>
 
         
         );

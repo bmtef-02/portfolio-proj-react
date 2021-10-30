@@ -42,7 +42,7 @@ class HeaderNoLogin extends Component {
 
         return(
             <React.Fragment>
-                <Navbar light sticky="top" expand="md">
+                <Navbar light sticky="top" expand="md" className="bg-white">
                     <div className="container-fluid">
                         <NavbarBrand className="mr-auto" href="/">
                             <img src="assets/images/logoipsum-logo-7.svg" alt="Logo"/>
