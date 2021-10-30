@@ -29,7 +29,7 @@ class SearchFilter extends Component {
                 <Container className={this.props.class}>
                     <Row className="mb-4 search-filters">
                         <NavbarToggler onClick={this.toggleNav} className="search-filter-toggler" />
-                        <Collapse isOpen={this.state.isNavOpen} navbar className="test">
+                        <Collapse isOpen={this.state.isNavOpen} navbar className="filter-align-top">
                             <Col className="mb-4">
                                 <Label htmlFor="projCategory">Project Category</Label>
                                 <Input type="select" name="projCategory" id="projCategory">

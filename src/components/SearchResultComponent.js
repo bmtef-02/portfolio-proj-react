@@ -18,8 +18,8 @@ function SearchResultItem({project}) {
 
     return(
         <CardDeck className="mb-4">
-            <Card className="scroll">
-                <Link to={`/projects/${project.id}`}>
+            <Card className="scroll search-result-card">
+                <Link className="text-reset text-decoration-none" to={`/projects/${project.id}`}>
                     <CardImg variant="top" src="/assets/images/placeholder-img.jpg" />
                     <CardBody>
                         <CardTitle><h4>{project.title}</h4></CardTitle>

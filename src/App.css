@@ -37,6 +37,7 @@
   margin-left: 30px;
 }
 
-.test {
+/* Overides the automatic align-items: center that the Collapse componenet has */
+.filter-align-top {
   align-items: flex-start;
 }
