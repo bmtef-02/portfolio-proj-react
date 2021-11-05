@@ -17,7 +17,7 @@ function SearchResultItem({project}) {
     });
 
     return(
-        <CardDeck className="mb-4">
+        <CardDeck className="mb-4" key={project.id}>
             <Card className="scroll search-result-card">
                 <Link className="text-reset text-decoration-none" to={`/projects/${project.id}`}>
                     <CardImg variant="top" src="/assets/images/placeholder-img.jpg" />
