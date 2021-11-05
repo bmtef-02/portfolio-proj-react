@@ -7,16 +7,36 @@ import Search from './SearchComponent';
 import Footer from './FooterComponent';
 import Create from './CreateComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { PROJECTS } from '../shared/projects';
-import { USERS } from '../shared/users'
+// import { PROJECTS } from '../shared/projects';
+// import { USERS } from '../shared/users'
+import { connect } from 'react-redux';
+import { actions } from 'react-redux-form';
+import { fetchProjects, fetchUsers } from '../redux/ActionCreators';
+
+const mapStateToProps = state => {
+    return {
+        projects: state.projects,
+        users: state.users
+    };
+};
+
+const mapDispatchToProps = {
+    fetchProjects: () => (fetchProjects()),
+    fetchUsers: () => (fetchUsers())
+};
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            projects: PROJECTS,
-            users: USERS
-        };
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         projects: PROJECTS,
+    //         users: USERS
+    //     };
+    // }
+
+    componentDidMount() {
+        this.props.fetchProjects();
+        this.props.fetchUsers();
     }
 
     render() {
@@ -56,4 +76,4 @@ class Main extends Component {
 
 }
 
-export default Main
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

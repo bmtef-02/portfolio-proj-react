@@ -1,18 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { createForms } from 'react-redux-form';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
-import { Projects } from './projects';
-import { Users } from './users';
+import * as ActionTypes from './ActionTypes';
 
-export const ConfigureStore = () => {
-    const store = createStore(
-        combineReducers({
-            projects: Projects,
-            users: Users
-        }),
-        applyMiddware(thunk, logger)
-    );
-
-    return store;
+export const Projects = (state = { isLoading: true, errMess: null, projects: [] }, action) => {
+    switch (action.type) {
+        case ActionTypes.PROJECTS_FAILED:
+            return {...state, isLoading: false, errMess: action.payload};
+        default:
+            return state;
+    }
 }
