@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitle } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl'
 
 function Project({project, users}) {
     const owner = users.filter(user=>project.owner_id === user.id)[0];
@@ -67,7 +68,7 @@ function Project({project, users}) {
                                 
                                 <CardBody>
                                         <h3>Project Owner</h3>
-                                        <img src={owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
+                                        <img src={baseUrl +owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
                                         <h5 class="mt-3 card-title">{owner.name}</h5>
                                         <a href="#" class="text-decoration-none">@{owner.username}</a>
                                 </CardBody>
@@ -94,7 +95,7 @@ function ProjectTeam({team}) {
                 <li class="list-group-item">
                     <div class="d-inline align-middle project-member">
                         <a href="#" class="text-decoration-none">
-                            <img src={team.user_img} width="30" class="img-fluid rounded-circle" alt="" />
+                            <img src={baseUrl + team.user_img} width="30" class="img-fluid rounded-circle" alt="" />
                             <span class="d-inline ml-1">{team.name}</span>
                         </a>
                     </div>

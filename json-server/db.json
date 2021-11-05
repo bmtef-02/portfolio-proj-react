@@ -10,7 +10,7 @@
         "experience": "5 years",
         "time": "<5 hours",
         "owner_id": 1,
-        "team_id": [],
+        "team_id": [1],
         "team_size": 6
 	},
 	{
@@ -23,7 +23,7 @@
         "experience": "5 years",
         "time": "<5 hours",
         "owner_id": 1,
-        "team_id": [],
+        "team_id": [0,1],
         "team_size": 6
 	}
 	],
@@ -32,13 +32,13 @@
         "id": 0,
         "name": "Mike Chen",
         "username": "mikerchen",
-        "user_img": "/assets/images/mike.jpg"
+        "user_img": "images/mike.jpg"
 	},
 		{
         "id": 1,
         "name": "Mike Chen",
         "username": "mikerchen",
-        "user_img": "/assets/images/mike.jpg"
+        "user_img": "images/mike.jpg"
 	}
 	]
 }

@@ -44,8 +44,8 @@ class Main extends Component {
                 console.log(match)
             return(
                 <Project 
-                project={this.state.projects.filter(project => project.id === +match.params.projectId)[0]}
-                users={this.state.users}
+                project={this.props.projects.projects.filter(project => project.id === +match.params.projectId)[0]}
+                users={this.props.users.users}
                 />
                 
             )
@@ -60,7 +60,7 @@ class Main extends Component {
                     <Route exact path='/home' render={() =>
                             <Home />
                         } />
-                    <Route path='/search-results' render={() => <SearchResult projects={this.state.projects} />} />
+                    <Route path='/search-results' render={() => <SearchResult projects={this.props.projects.projects} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />
                     <Route path='/create-a-project' component={Create} />
                 </Switch>
