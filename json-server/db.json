@@ -1,0 +1,44 @@
+{
+	"projects": [
+	{
+        "id": 0,
+        "title": "Javascript-Game",
+        "description": "A fun game to play",
+        "img": "img/...",
+        "languages": ["Javascript", "HTML", "CSS"],
+        "category": "Game",
+        "experience": "5 years",
+        "time": "<5 hours",
+        "owner_id": 1,
+        "team_id": [],
+        "team_size": 6
+	},
+	{
+	"id": 1,
+        "title": "Javascript-Game",
+        "description": "A fun game to play",
+        "img": "img/...",
+        "languages": ["Javascript", "HTML", "CSS"],
+        "category": "Game",
+        "experience": "5 years",
+        "time": "<5 hours",
+        "owner_id": 1,
+        "team_id": [],
+        "team_size": 6
+	}
+	],
+	"users": [
+	{
+        "id": 0,
+        "name": "Mike Chen",
+        "username": "mikerchen",
+        "user_img": "/assets/images/mike.jpg"
+	},
+		{
+        "id": 1,
+        "name": "Mike Chen",
+        "username": "mikerchen",
+        "user_img": "/assets/images/mike.jpg"
+	}
+	]
+}
