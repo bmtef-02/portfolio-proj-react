@@ -32,7 +32,7 @@ export const USERS = [
     {
         id: 5,
         name: 'Mel Jimenez',
-        username: 'ahuynh',
+        username: 'mjimenez',
         user_img: '/assets/images/brian.png'
     },
 ]

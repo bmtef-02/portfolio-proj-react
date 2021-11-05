@@ -6,7 +6,7 @@ import Project from './ProjectComponent';
 import Search from './SearchComponent';
 import Footer from './FooterComponent';
 import Create from './CreateComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // import { PROJECTS } from '../shared/projects';
 // import { USERS } from '../shared/users'
 import { connect } from 'react-redux';
