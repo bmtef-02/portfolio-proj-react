@@ -29,6 +29,51 @@ export const addProjects = projects => ({
     payload: projects
 })
 
+export const addProject = project => ({
+    type: ActionTypes.ADD_PROJECT,
+    payload: project
+});
+
+
+export const postProject = (title, description, time, category) => dispatch => {
+    const newProject = {
+        title,
+        description,
+        time,
+        category
+    };
+    newProject.date = new Date().toISOString();
+
+    return fetch(baseUrl + 'projects', {
+        method: 'POST',
+        body: JSON.stringify(newProject),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            const error = new Error(`Error  ${response.status}: ${response.statusText}`);
+            error.response = response;
+            throw error;
+            }
+        },
+        error => {throw error;}
+    )
+    .then(response => response.json())
+    .then(response => dispatch(addProject(response)))
+    .then(response => alert('Your project has been added') + JSON.stringify(response))
+    .catch(error => {
+        console.log('post project', error.message);
+        alert('Your project could not be posted\nError: ' + error.message);
+    });
+};
+
+
+
+
 export const projectsFailed = errMess => ({
     type: ActionTypes.PROJECTS_FAILED,
     payload: errMess

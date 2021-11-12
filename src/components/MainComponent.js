@@ -11,7 +11,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // import { USERS } from '../shared/users'
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { fetchProjects, fetchUsers } from '../redux/ActionCreators';
+import { fetchProjects, fetchUsers, postProject } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -22,7 +22,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     fetchProjects: () => (fetchProjects()),
-    fetchUsers: () => (fetchUsers())
+    fetchUsers: () => (fetchUsers()),
+    postProject: (title, description, time, category) => (postProject(title, description, time, category))
 };
 
 class Main extends Component {
@@ -62,7 +63,7 @@ class Main extends Component {
                         } />
                     <Route path='/search-results' render={() => <SearchResult projects={this.props.projects.projects} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />
-                    <Route path='/create-a-project' component={Create} />
+                    <Route path='/create-a-project' render={() => <Create postProject={this.props.postProject} />} />
                 </Switch>
                 <Footer />
             </React.Fragment>

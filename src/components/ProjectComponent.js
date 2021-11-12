@@ -21,8 +21,6 @@ function Project({project, users}) {
             unoccupied.push('Open');
         }
     }
-
-    console.log(project.languages)
         return(
             <div>
                 <div className="container-fluid">
@@ -41,7 +39,7 @@ function Project({project, users}) {
                                     <CardTitle>Languages</CardTitle>
                                     <CardText>
                                         <ul className="list-group list-group-flush">
-                                            <Languages lang={project.languages} />
+                                            {/* <Languages lang={project.languages} /> */}
                                         </ul>
                                     </CardText>
                                 </CardBody>
