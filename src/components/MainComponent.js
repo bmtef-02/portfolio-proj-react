@@ -61,7 +61,7 @@ class Main extends Component {
                     <Route exact path='/home' render={() =>
                             <Home />
                         } />
-                    <Route path='/search-results' render={() => <SearchResult projects={this.props.projects.projects} />} />
+                    <Route path='/search-results' render={() => <SearchResult projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />
                     <Route path='/create-a-project' render={() => <Create postProject={this.props.postProject} />} />
                 </Switch>

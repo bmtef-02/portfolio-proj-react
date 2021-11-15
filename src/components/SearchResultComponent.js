@@ -3,10 +3,10 @@ import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
 import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Col, Row, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent'
 
 // This function returns each project and it's info as a Card
 function SearchResultItem({project}) {
-    
     // This function returns each languagae stored in each project object
     const projectLang = project.languages.map(project => {
         return (
@@ -47,6 +47,16 @@ function SearchResult(props) {
             </div>
         )
     });
+
+    if(props.projectsLoading) {
+        return( 
+        <>
+            <SearchBar class="remove-margin" />
+            <SearchFilter class="remove-margin" />
+            <Loading />
+        </>
+        )
+    }
 
     return (
         <React.Fragment>

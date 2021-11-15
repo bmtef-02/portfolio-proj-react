@@ -29,6 +29,10 @@ export const addProjects = projects => ({
     payload: projects
 })
 
+export const projectsLoading = () => ({
+    type: ActionTypes.PROJECTS_LOADING
+});
+
 export const addProject = project => ({
     type: ActionTypes.ADD_PROJECT,
     payload: project

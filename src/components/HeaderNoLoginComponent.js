@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Nav, NavbarToggler, NavLink, Collapse, Navbar, NavItem, NavbarBrand, 
+import { Nav, NavbarToggler, Collapse, Navbar, NavItem, NavbarBrand, 
     Button, Form, FormGroup, Input, Label, 
     Modal, ModalHeader, ModalBody} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 
 class HeaderNoLogin extends Component {
 
