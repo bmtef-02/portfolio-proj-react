@@ -14,7 +14,7 @@ function Project({project, users}) {
             } 
         }
     }
-    const open_spots = project.team_size - team.length;
+    const open_spots = project.teamSize - team.length;
     const unoccupied = [];
     if (open_spots > 0) {
         for (let i=0; i < open_spots; i++) {
@@ -39,7 +39,7 @@ function Project({project, users}) {
                                     <CardTitle>Languages</CardTitle>
                                     <CardText>
                                         <ul className="list-group list-group-flush">
-                                            {/* <Languages lang={project.languages} /> */}
+                                            <Languages lang={project.languages} />
                                         </ul>
                                     </CardText>
                                 </CardBody>
@@ -73,7 +73,7 @@ function Project({project, users}) {
                                 
                             </Card>
                             <Card className="shadow-sm text-left mt-2">
-                                <h3 className="text-center">Project Team (Spots: {project.team_size})</h3>
+                                <h3 className="text-center">Project Team (Spots: {project.teamSize})</h3>
                                 <ul class="list-group list-group-flush">
                                     <ProjectTeam team={team} />
                                     <Open unoccupied={unoccupied} />
@@ -112,7 +112,6 @@ function Open({unoccupied}) {
     const op = unoccupied.map((spot) =>
         <li class="list-group-item">
             <div class="d-inline align-middle project-member">
-                <span class="d-inline ml-1">{spot}</span>
                 <button class="btn btn-success ml-2">Join Team</button>
             </div>
         </li>

@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     fetchProjects: () => (fetchProjects()),
     fetchUsers: () => (fetchUsers()),
-    postProject: (title, description, time, category) => (postProject(title, description, time, category))
+    postProject: (title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id) => (postProject(title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id))
 };
 
 class Main extends Component {
