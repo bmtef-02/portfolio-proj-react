@@ -3,6 +3,7 @@ import { Nav, NavbarToggler, Collapse, Navbar, NavItem, NavbarBrand,
     Button, Form, FormGroup, Input, Label, 
     Modal, ModalHeader, ModalBody} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
 
 class HeaderNoLogin extends Component {
 
@@ -44,7 +45,7 @@ class HeaderNoLogin extends Component {
                 <Navbar light sticky="top" expand="md" className="bg-dark">
                     <div className="container-fluid">
                         <NavbarBrand className="mr-auto" href="/">
-                            <img src="assets/images/logoipsum-logo-7.svg" alt="Logo"/>
+                            <img src={baseUrl + 'images/logoipsum-logo.svg'} alt="Logo"/>
                         </NavbarBrand>
                         <NavbarToggler onClick={this.toggleNav} />
                         <Collapse isOpen={this.state.isNavOpen} navbar>
