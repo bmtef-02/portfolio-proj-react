@@ -41,7 +41,7 @@ class HeaderNoLogin extends Component {
 
         return(
             <React.Fragment>
-                <Navbar light sticky="top" expand="md" className="bg-white">
+                <Navbar light sticky="top" expand="md" className="bg-dark">
                     <div className="container-fluid">
                         <NavbarBrand className="mr-auto" href="/">
                             <img src="assets/images/logoipsum-logo-7.svg" alt="Logo"/>
@@ -50,13 +50,13 @@ class HeaderNoLogin extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink className="nav-link" to="/home"> Home</NavLink>
+                                <NavLink className="nav-link text-muted" to="/home"> Home</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to="/"> About Us</NavLink>
+                                <NavLink className="nav-link text-muted" to="/"> About Us</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link" to="/"> Explore</NavLink>
+                                <NavLink className="nav-link text-muted" to="/"> Explore</NavLink>
                             </NavItem>
                         </Nav>
                         <span className="navbar-text">

@@ -21,7 +21,7 @@ class Header extends Component {
     render() {
         return(
             <React.Fragment>
-                <Navbar light sticky="top" expand="md" className="bg-white">
+                <Navbar light sticky="top" expand="md" className="bg-dark">
                     <div className="container-fluid">
                         <NavbarBrand className="mr-auto" href="/">
                             <img src="/assets/images/logoipsum-logo-7.svg" alt="Logo"/> 
@@ -30,13 +30,13 @@ class Header extends Component {
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/home"> Home</NavLink>
+                                    <NavLink className="nav-link text-muted" to="/home"> Home</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/directory"> Explore</NavLink>
+                                    <NavLink className="nav-link text-muted" to="/directory"> Explore</NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/create-a-project"> Create a Project</NavLink>
+                                    <NavLink className="nav-link text-muted" to="/create-a-project"> Create a Project</NavLink>
                                 </NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle nav caret>
@@ -44,20 +44,20 @@ class Header extends Component {
                                     </DropdownToggle>
                                     <DropdownMenu right>
                                         <DropdownItem>
-                                            <NavLink className="nav-link" to="/directory"> Profile</NavLink>
+                                            <NavLink className="nav-link text-muted" to="/directory"> Profile</NavLink>
                                         </DropdownItem>
                                         <DropdownItem>
-                                            <NavLink className="nav-link" to="/directory"> My Projects</NavLink>
+                                            <NavLink className="nav-link text-muted" to="/directory"> My Projects</NavLink>
                                         </DropdownItem>
                                         <DropdownItem>
-                                            <NavLink className="nav-link" to="/directory"> Messages <Badge color="success">4</Badge></NavLink>
+                                            <NavLink className="nav-link text-muted" to="/directory"> Messages <Badge color="success">4</Badge></NavLink>
                                         </DropdownItem>
                                         <DropdownItem>
-                                            <NavLink className="nav-link" to="/directory"> Preferences</NavLink>
+                                            <NavLink className="nav-link text-muted" to="/directory"> Preferences</NavLink>
                                         </DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem>
-                                            <NavLink className="nav-link" to="/directory"> Log Out</NavLink>
+                                            <NavLink className="nav-link text-muted" to="/directory"> Log Out</NavLink>
                                         </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>

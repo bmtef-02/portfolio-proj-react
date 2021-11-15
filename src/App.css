@@ -1,8 +1,13 @@
+body {
+  background-color: #343a40;
+}
+
 .search-result {
     height: 200px;
 }
 .site-footer {
-    background: rgba(255,202,181,1);
+    /* background: rgba(255,202,181,1); */
+    background-color: #343a40;
     padding: 20px 0;
   }
 
