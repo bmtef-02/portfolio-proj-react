@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl'
 
 function Footer(props) {
     return(
@@ -24,7 +25,7 @@ function Footer(props) {
                     </div>
                     <div className="col-sm-4 text-center mt-4 mt-sm-0">
                         <a className="brand" href="#">
-                            <img className="d-block mx-auto" src="assets/images/logoipsum-logo-7.svg" height="30" />
+                            <img className="d-block mx-auto" src={baseUrl + '/images/logoipsum-logo.svg'} height="30" />
                         </a>
                     </div>
                 </div>
