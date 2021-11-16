@@ -28,13 +28,13 @@ const mapDispatchToProps = {
 };
 
 class Main extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         projects: PROJECTS,
-    //         users: USERS
-    //     };
-    // }
+    constructor(props) {
+        super(props);
+        // this.state = {
+        //     projects: PROJECTS,
+        //     users: USERS
+        // };
+    }
 
     componentDidMount() {
         this.props.fetchProjects();
@@ -42,12 +42,14 @@ class Main extends Component {
     }
 
     render() {
+        
         const ProjectWithId = ({match}) => {
-                console.log(match)
             return(
                 <Project 
                 project={this.props.projects.projects.filter(project => project.id === +match.params.projectId)[0]}
                 users={this.props.users.users}
+                isLoadingProjects={this.props.projects.isLoading}
+                isLoadingUsers={this.props.users.isLoading}
                 />
                 
             )

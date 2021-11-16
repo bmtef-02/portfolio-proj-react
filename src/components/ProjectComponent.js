@@ -1,36 +1,59 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitle } from 'reactstrap';
-import { baseUrl } from '../shared/baseUrl'
+import { baseUrl } from '../shared/baseUrl';
+import { Loading } from '../components/LoadingComponent';
 
-function Project({project, users}) {
-    const owner = users.filter(user=>project.owner_id === user.id)[0];
-    const team_ids = project.team_id
-    const team = [];
-    for (let i=0; i<team_ids.length; i++) {
-        for (let j=0; j<users.length; j++) {
-            if (team_ids[i] === users[j].id) {
-                team.push(users[j]);
-            } 
-        }
+class Project extends Component {
+    constructor(props) {
+        super(props);
     }
-    const open_spots = project.teamSize - team.length;
-    const unoccupied = [];
-    if (open_spots > 0) {
-        for (let i=0; i < open_spots; i++) {
-            unoccupied.push('Open');
+
+    render() { 
+        if(this.props.isLoadingProjects || this.props.isLoadingUsers ) {
+            return(
+                <div className="container">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            )
         }
-    }
+        console.log(this.props.project);
+        console.log(this.props.users);
+        const owner = this.props.users.filter(user=>this.props.project.owner_id === user.id)[0];
+        console.log(owner)
+        const team_ids = this.props.project.team_id
+        console.log(team_ids)
+        const team = [];
+            for (let i=0; i<team_ids.length; i++) {
+                for (let j=0; j<this.props.users.length; j++) {
+                    if (team_ids[i] === this.props.users[j].id) {
+                        team.push(this.props.users[j]);
+                    } 
+                }
+            }
+            console.log(team)
+        const open_spots = this.props.project.teamSize - team.length;
+        console.log(open_spots)
+        const unoccupied = [];
+            if (open_spots > 0) {
+                for (let i=0; i < open_spots; i++) {
+                    unoccupied.push('Open');
+                }
+        }
+        console.log(unoccupied)
+        
         return(
             <div>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-8">
-                            <h2>{project.title}</h2>
+                            <h2>{this.props.project.title}</h2>
                             <Card>
                                 <CardBody>
                                     <CardText>
-                                        {project.description}
+                                        {this.props.project.description}
                                     </CardText>
                                 </CardBody>
                             </Card>
@@ -39,7 +62,7 @@ function Project({project, users}) {
                                     <CardTitle>Languages</CardTitle>
                                     <CardText>
                                         <ul className="list-group list-group-flush">
-                                            <Languages lang={project.languages} />
+                                            <Languages lang={this.props.project.languages} />
                                         </ul>
                                     </CardText>
                                 </CardBody>
@@ -48,7 +71,7 @@ function Project({project, users}) {
                                 <CardBody>
                                     <CardTitle>Years of Experience</CardTitle>
                                     <CardText>
-                                        {project.experience}
+                                        {this.props.project.experience}
                                     </CardText>
                                 </CardBody>
                             </Card>
@@ -56,24 +79,23 @@ function Project({project, users}) {
                                 <CardBody>
                                     <CardTitle>Weekly Time Commitment</CardTitle>
                                     <CardText>
-                                        {project.time}
+                                        {this.props.project.time}
                                     </CardText>
                                 </CardBody>
                             </Card>
                         </div>
                         <div className="col-md-4">
                             <Card className="shadow-sm text-center mt-md-5">
-                                
                                 <CardBody>
                                         <h3>Project Owner</h3>
-                                        <img src={baseUrl +owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
+                                        <img src={baseUrl + owner.user_img} class="img-fluid rounded-circle" width="200" alt="Project-Owner" />
                                         <h5 class="mt-3 card-title">{owner.name}</h5>
                                         <a href="#" class="text-decoration-none">@{owner.username}</a>
                                 </CardBody>
                                 
                             </Card>
                             <Card className="shadow-sm text-left mt-2">
-                                <h3 className="text-center">Project Team (Spots: {project.teamSize})</h3>
+                                <h3 className="text-center">Project Team (Spots: {this.props.project.teamSize})</h3>
                                 <ul class="list-group list-group-flush">
                                     <ProjectTeam team={team} />
                                     <Open unoccupied={unoccupied} />
@@ -84,6 +106,8 @@ function Project({project, users}) {
                 </div>
             </div>
         )
+    }
+
 }
 
 function ProjectTeam({team}) {
@@ -135,5 +159,6 @@ function Languages({lang}) {
         </div>
     )
 }
+
 
 export default Project

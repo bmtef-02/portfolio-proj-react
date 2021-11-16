@@ -120,3 +120,7 @@ export const usersFailed = errMess => ({
     type: ActionTypes.USERS_FAILED,
     payload: errMess
 });
+
+export const usersLoading = () => ({
+    type: ActionTypes.USERS_LOADING
+});
