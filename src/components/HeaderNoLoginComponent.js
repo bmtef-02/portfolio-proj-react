@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavbarToggler, Collapse, Navbar, NavItem, NavbarBrand, 
-    Button, Form, FormGroup, Input, Label, 
+    Button, Form, FormGroup, FormFeedback, Input, Label, 
     Modal, ModalHeader, ModalBody} from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
@@ -13,10 +13,22 @@ class HeaderNoLogin extends Component {
         this.state = {
             isNavOpen: false,
             isModalOpen: false,
+
+            // these props correspond to the login modal inputs
+            username: "",
+            password: "",
+            remember: false,
+
+            // this prop checks if user clicked the fields. If false, don't run input validation
+            touched: {
+                username: false,
+                password: false,
+            }
         };
 
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
 
@@ -33,12 +45,47 @@ class HeaderNoLogin extends Component {
     }
 
     handleLogin(event) {
-        console.log(`Username: ${this.username.value} Password: ${this.password.value} Remember: ${this.remember.checked}`);
         this.toggleModal();
         event.preventDefault();
     }
 
+    // this method will validate the passed in parameters
+    validate(username) {
+        const errors = {
+            username: "",
+        }
+
+        if (this.state.touched.username) {
+            if (username.length < 2) {
+                errors.username = "Username must be at least 2 characters.";
+            } else if (username.length > 15) {
+                errors.username = "Username must be 15 characters or less";
+            }
+        }
+
+        return errors;
+    }
+
+    // this method checks if field is touched
+    handleBlur = (field) => () => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        });
+    }
+
+    // this method handles changes in the form elements
+    handleInputChange(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.type === "checkbox" ? target.checked : target.value;
+
+        this.setState({
+            [name]: value
+        });
+    }
+
     render() {
+        const errors = this.validate(this.state.username);
 
         return(
             <React.Fragment>
@@ -74,14 +121,18 @@ class HeaderNoLogin extends Component {
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
-                                <Label htmlfor="username">Username</Label>
+                                <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username" name="username"
-                                    innerRef={input => this.username = input}
+                                    value={this.state.username}
+                                    invalid={errors.username}
+                                    onBlur={this.handleBlur("username")}
+                                    onChange={this.handleInputChange}
                                 />
+                                <FormFeedback>{errors.username}</FormFeedback>
                             </FormGroup>
                             <FormGroup>
-                                <Label htmlfor="password">Password</Label>
-                                <Input type="text" id="password]" name="password"
+                                <Label htmlFor="password">Password</Label>
+                                <Input type="text" id="password" name="password"
                                     innerRef={input => this.password = input}
                                 />
                             </FormGroup>
