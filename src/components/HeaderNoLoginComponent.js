@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Nav, NavbarToggler, Collapse, Navbar, NavItem, NavbarBrand, 
     Button, Label, Row,
     Modal, ModalHeader, ModalBody} from 'reactstrap';
-import { Control, LocalForm } from 'react-redux-form';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { NavLink } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 
