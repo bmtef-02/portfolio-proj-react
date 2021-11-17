@@ -6,6 +6,10 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { NavLink } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 
+const required = val => val && val.length;
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+
 class HeaderNoLogin extends Component {
 
     constructor(props) {
@@ -89,12 +93,44 @@ class HeaderNoLogin extends Component {
                                     <Label htmlFor="username">Username</Label>
                                     <Control.text model=".username" id="username" name="username" 
                                         className="form-control"
+                                        validators={{
+                                            required, 
+                                            minLength: minLength(2),
+                                            maxLength: maxLength(15)
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".username"
+                                        show="touched"
+                                        component="div"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be at least 2 characters',
+                                            maxLength: 'Must be 15 characters or less'
+                                        }}
                                     />
                                 </Row>
                                 <Row className="form-group">
                                     <Label htmlFor="password">Password</Label>
-                                    <Control.text model=".username" id="password" name="password"
+                                    <Control.text model=".password" id="password" name="password"
                                         className="form-control"
+                                        validators={{
+                                            required, 
+                                            minLength: minLength(6),
+                                            maxLength: maxLength(21)
+                                        }}
+                                    />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".password"
+                                        show="touched"
+                                        component="div"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be at least 6 characters',
+                                            maxLength: 'Must be 21 characters or less'
+                                        }}
                                     />
                                 </Row>
                                 <Row className="form-group">
