@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Nav, NavbarToggler, Collapse, Navbar, NavItem, NavbarBrand, 
-    Button, Form, FormGroup, FormFeedback, Input, Label, 
+    Button, Label, Row,
     Modal, ModalHeader, ModalBody} from 'reactstrap';
+import { Control, LocalForm } from 'react-redux-form';
 import { NavLink } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -28,7 +29,7 @@ class HeaderNoLogin extends Component {
 
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+        // this.handleInputChange = this.handleInputChange.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
 
@@ -44,48 +45,11 @@ class HeaderNoLogin extends Component {
         });
     }
 
-    handleLogin(event) {
+    handleLogin(values) {
         this.toggleModal();
-        event.preventDefault();
-    }
-
-    // this method will validate the passed in parameters
-    validate(username) {
-        const errors = {
-            username: "",
-        }
-
-        if (this.state.touched.username) {
-            if (username.length < 2) {
-                errors.username = "Username must be at least 2 characters.";
-            } else if (username.length > 15) {
-                errors.username = "Username must be 15 characters or less";
-            }
-        }
-
-        return errors;
-    }
-
-    // this method checks if field is touched
-    handleBlur = (field) => () => {
-        this.setState({
-            touched: {...this.state.touched, [field]: true}
-        });
-    }
-
-    // this method handles changes in the form elements
-    handleInputChange(event) {
-        const target = event.target;
-        const name = target.name;
-        const value = target.type === "checkbox" ? target.checked : target.value;
-
-        this.setState({
-            [name]: value
-        });
     }
 
     render() {
-        const errors = this.validate(this.state.username);
 
         return(
             <React.Fragment>
@@ -119,33 +83,33 @@ class HeaderNoLogin extends Component {
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username"
-                                    value={this.state.username}
-                                    invalid={errors.username}
-                                    onBlur={this.handleBlur("username")}
-                                    onChange={this.handleInputChange}
-                                />
-                                <FormFeedback>{errors.username}</FormFeedback>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="password">Password</Label>
-                                <Input type="text" id="password" name="password"
-                                    innerRef={input => this.password = input}
-                                />
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="remember"
-                                        innerRef={input => this.remember = input}
+                        <div>
+                            <LocalForm onSubmit={this.handleLogin}>
+                                <Row className="form-group">
+                                    <Label htmlFor="username">Username</Label>
+                                    <Control.text model=".username" id="username" name="username" 
+                                        className="form-control"
                                     />
-                                    Remember Me
-                                </Label>
-                            </FormGroup>
-                            <Button onClick={this.props.onClick} type="submit" value="submit" color="primary">Login</Button>
-                        </Form>
+                                </Row>
+                                <Row className="form-group">
+                                    <Label htmlFor="password">Password</Label>
+                                    <Control.text model=".username" id="password" name="password"
+                                        className="form-control"
+                                    />
+                                </Row>
+                                <Row className="form-group">
+                                    <div className="form-check">
+                                        <Label check>
+                                            <Control.checkbox model=".remember" name="remember" />
+                                            Remember Me
+                                        </Label>
+                                    </div>
+                                </Row>
+                                <Row className="form-group">
+                                    <Button onClick={this.props.onClick} type="submit" color="primary">Login</Button>
+                                </Row>
+                            </LocalForm>
+                        </div>
                     </ModalBody>
                 </Modal>
             </React.Fragment>            
