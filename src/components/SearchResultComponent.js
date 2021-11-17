@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
 import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Col, Row, Badge } from 'reactstrap';
@@ -38,7 +38,19 @@ function SearchResultItem({project}) {
 
 // This function renders the SearcBar, SearchFilter, and project Cards component
 function SearchResult(props) {
-    
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+    const filterPosts = (posts, query) => {
+    if (!query) {
+        return posts;
+    }
+
+    return posts.filter((post) => {
+        const postName = post.name.toLowerCase();
+        return postName.includes(query);
+    });
+};
+    // const result_list = props.projects.filter(project => project.category === search_category)
     // This function maps through the PROJECTS array and passes each object to SearchResultItem
     const projects = props.projects.map(project => {
         return (

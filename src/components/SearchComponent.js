@@ -27,12 +27,12 @@ class Search extends Component {
                         <Col>
                             <Label htmlFor="projCategory">Project Category</Label>
                             <Input type="select" name="projCategory" id="projCategory">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
+                                <option value="Automation">Automation</option>
+                                <option value="Crypto">Crypto</option>
+                                <option value="Data">Data</option>
+                                <option value="Game">Game</option>
+                                <option value="Web Design">Web Design</option>
+                                <option value="Other">Other</option>
                             </Input>
                         </Col>
                         <Col>

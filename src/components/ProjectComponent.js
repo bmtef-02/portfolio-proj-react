@@ -19,12 +19,8 @@ class Project extends Component {
                 </div>
             )
         }
-        console.log(this.props.project);
-        console.log(this.props.users);
         const owner = this.props.users.filter(user=>this.props.project.owner_id === user.id)[0];
-        console.log(owner)
         const team_ids = this.props.project.team_id
-        console.log(team_ids)
         const team = [];
             for (let i=0; i<team_ids.length; i++) {
                 for (let j=0; j<this.props.users.length; j++) {
@@ -33,16 +29,13 @@ class Project extends Component {
                     } 
                 }
             }
-            console.log(team)
         const open_spots = this.props.project.teamSize - team.length;
-        console.log(open_spots)
         const unoccupied = [];
             if (open_spots > 0) {
                 for (let i=0; i < open_spots; i++) {
                     unoccupied.push('Open');
                 }
         }
-        console.log(unoccupied)
         
         return(
             <div>
@@ -133,7 +126,7 @@ function ProjectTeam({team}) {
 }
 
 function Open({unoccupied}) {
-    const op = unoccupied.map((spot) =>
+    const op = unoccupied.map(() =>
         <li class="list-group-item">
             <div class="d-inline align-middle project-member">
                 <button class="btn btn-success ml-2">Join Team</button>

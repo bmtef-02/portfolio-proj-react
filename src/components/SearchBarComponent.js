@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Input, 
-    Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom'
+    Container, Row, Col, Form } from 'reactstrap';
+import { Link, useHistory } from 'react-router-dom'
+
 
 class SearchBar extends Component {
     constructor(props) {
@@ -9,16 +10,30 @@ class SearchBar extends Component {
     }
 
     render() {
+        const SearchBar = ({ searchQuery, setSearchQuery}) => {
+            const history = useHistory();
+            const onSubmit = e => {
+                history.push(`?s=${searchQuery}`)
+                e.preventDefault()
+            }
+        };
+
         return(
             <Container className={this.props.class}>
-                <Row className="mb-2">
-                    <Col xs={this.props.colSpan}>
-                        <Input type="text" placeholder="Search"/>     
-                    </Col>
-                    <Col>
-                        <Link to="/search-results"><Button className="btn btn-primary">Search</Button></Link>
-                    </Col>
-                </Row>
+                <Form action="/" method="get" autoComplete="off" onSubmit={this.onSubmit}>
+                    <Row className="mb-2">
+                        <Col xs={this.props.colSpan}>
+                            <Input 
+                                type="text" 
+                                placeholder="Search" 
+                                id="project-search" 
+                                name="s"/>     
+                        </Col>
+                        <Col>
+                            <Button type="submit" className="btn btn-primary">Search</Button>
+                        </Col>
+                    </Row>
+                </Form>
             </Container>
         );
     }
