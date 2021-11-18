@@ -64,7 +64,7 @@ class Project extends Component {
                                 <CardBody>
                                     <CardTitle>Years of Experience</CardTitle>
                                     <CardText>
-                                        {this.props.project.experience}
+                                        {this.props.project.yearsOfExp}
                                     </CardText>
                                 </CardBody>
                             </Card>
