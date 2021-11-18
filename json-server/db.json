@@ -19,7 +19,7 @@
     },
     {
       "id": 1,
-      "title": "Python-Automation",
+      "title": "Python Automation",
       "description": "A fun game to play",
       "img": "img/...",
       "languages": [
@@ -39,7 +39,7 @@
     {
       "id": 2,
       "title": "Python code with SARIMA",
-      "description": "I want an expert in python code to use SARIMA package spicily for weather forecasting. With different scenarios from ipcc climate change. I want to build a model to find future weather. please if you do not about that do not waste your time",
+      "description": "I want an expert in python code to use package spicily for weather forecasting. With different scenarios from ipcc climate change. I want to build a model to find future weather. please if you do not about that do not waste your time",
       "img": "img/...",
       "languages": [
         "Python",
@@ -57,7 +57,7 @@
     {
       "id": 3,
       "title": "Looking for Python and Google Cloud expert to automate functional ETL python script in Cloud Run",
-      "description": "I need assistance with migrating an ETL python script that currently runs locally to a cloud run an instance on GCP. The code is a simple main. py function. Code is currently in a private Github repo. I would like to have CI/CD with this GitHub repo. There may need to be some code updates to support HTTP (required for Cloud Run) and therefore might need to be redesigned into a flask app.",
+      "description": "I need assistance with migrating an ETL python script that currently runs locally to a cloud run an instance on GCP. The code is a simple main. py function. Code is currently in a private Github repo. I would like to have CI/CD with this GitHub repo. There may need to be some code updates to support HTTP (required for Cloud Run) and SARIMA therefore might need to be redesigned into a flask app.",
       "img": "img/...",
       "languages": [
         "Python"
@@ -169,6 +169,38 @@
       "team_id": [],
       "date": "2021-11-15T00:27:16.050Z",
       "id": 14
+    },
+    {
+      "title": "Test",
+      "category": "Game",
+      "teamSize": 2,
+      "description": "Test",
+      "languages": [
+        "HTML"
+      ],
+      "yearsOfExp": "<1 year",
+      "time": "<5 hours",
+      "owner_id": 1,
+      "team_id": [],
+      "date": "2021-11-18T06:04:51.156Z",
+      "id": 15
+    },
+    {
+      "title": "ReactTest v2",
+      "category": "Game",
+      "teamSize": 4,
+      "description": "description ",
+      "languages": [
+        "HTML",
+        "JS",
+        "Python"
+      ],
+      "yearsOfExp": "5-10 years",
+      "time": "20-40 hours",
+      "owner_id": 1,
+      "team_id": [],
+      "date": "2021-11-18T06:58:18.854Z",
+      "id": 19
     }
   ],
   "users": [

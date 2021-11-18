@@ -46,7 +46,7 @@ export const postProject = (title, category, teamSize, description, languages, y
         category,
         teamSize : teamSizeNum,
         description,
-        languages: [languages],
+        languages,
         yearsOfExp,
         time,
         owner_id: 1,

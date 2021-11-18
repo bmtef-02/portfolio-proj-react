@@ -5,8 +5,8 @@ import SearchResult from './SearchResultComponent';
 import Project from './ProjectComponent';
 import Search from './SearchComponent';
 import Footer from './FooterComponent';
-// import Create from './CreateComponent';
-import Create from './CreateComponentMUI';
+import Create from './CreateComponent';
+// import Create from './CreateComponentMUI';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // import { PROJECTS } from '../shared/projects';
 // import { USERS } from '../shared/users'

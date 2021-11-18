@@ -3,6 +3,8 @@ import { Jumbotron,
     Container, Row, Col  } from 'reactstrap';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Loading } from '../components/LoadingComponent'
     
 
 class Home extends Component {
@@ -24,12 +26,10 @@ class Home extends Component {
                     <SearchBar colSpan="10" />
                     <SearchFilter />
                 </div>
-                
-                
             </React.Fragment>
         )
     }
 }
 
-export default Home;
+export default withRouter(Home);
     

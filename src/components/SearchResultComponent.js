@@ -7,6 +7,7 @@ import { Loading } from './LoadingComponent'
 
 // This function returns each project and it's info as a Card
 function SearchResultItem({project}) {
+
     // This function returns each languagae stored in each project object
     const projectLang = project.languages.map(project => {
         return (
@@ -40,19 +41,38 @@ function SearchResultItem({project}) {
 function SearchResult(props) {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
-    const filterPosts = (posts, query) => {
-    if (!query) {
-        return posts;
-    }
+    console.log('search query:' + query)
+    const cat = new URLSearchParams(search).get('c');
+    console.log('category dropdown: ' + cat)
+    const filterProjects = (projects, query, cat) => {
+        if (!query && !cat) {
+            return projects;
+        }
+        else if (!query) {
+            return projects.filter((project) => {
+                const projectCategory = project.category.toLowerCase();
+                console.log('projectCategory variable: ' + projectCategory)
+                console.log('from projects array: ' + project.category)
+                return projectCategory.includes(cat);
+            })
+        }
+    
+        return projects.filter((project) => {
+            const projectTitle = project.title.toLowerCase();
+            const projectDescription = project.description.toLowerCase();
+            const projectCategory = project.category.toLowerCase();
+            console.log('Project Title: ' + project.title)
+            console.log('Project Category: ' + project.category)
+            return projectCategory.includes(cat) && (projectTitle.includes(query) || projectDescription.includes(query)) 
+        });
+    };
 
-    return posts.filter((post) => {
-        const postName = post.name.toLowerCase();
-        return postName.includes(query);
-    });
-};
+    const filteredProjects = filterProjects(props.projects, query, cat);
+    console.log(filteredProjects)
+
     // const result_list = props.projects.filter(project => project.category === search_category)
     // This function maps through the PROJECTS array and passes each object to SearchResultItem
-    const projects = props.projects.map(project => {
+    const projects = filteredProjects.map(project => {
         return (
             <div key={project.id} className="col-xl-3 col-md-4 col-6">
                 <SearchResultItem project={project} />

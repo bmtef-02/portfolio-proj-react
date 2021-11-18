@@ -8,20 +8,48 @@ class Create extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            title: null,
+            category: null,
+            teamSize: null,
+            description: null,
+            languages: null, 
+            yearsOfExp: null,
+            time: null
         }
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelectedMultiple = this.handleSelectedMultiple.bind(this);
     }
 
-    handleSubmit(values) {
+    handleChange(event) {
+        console.log(event.target.name)
+        const value = event.target.value;
+        this.setState({
+          ...this.state,
+          [event.target.name]: value
+        });
+    }
+
+    handleSelectedMultiple = evt => {
+        const values = Array.from(evt.target.selectedOptions, option => option.value);
+        // Or this way
+       // const values = [...evt.target.selectedOptions].map(opt => opt.value)
+        console.log('values', values);
+        this.setState({languages: values});
+      };
+
+    handleSubmit(event) {
+        
         this.props.postProject(
-            values.title, 
-            values.category, 
-            values.teamSize, 
-            values.description, 
-            values.languages, 
-            values.yearsOfExp, 
-            values.time
+            this.state.title,
+            this.state.category,
+            this.state.teamSize,
+            this.state.description,
+            this.state.languages,
+            this.state.yearsOfExp,
+            this.state.time
         );
+        event.preventDefault();
     }
 
     render() {
@@ -34,7 +62,7 @@ class Create extends Component {
                         <Col>
                             <Card>
                                 <CardBody>
-                                    <LocalForm onSubmit={values => this.handleSubmit(values)}>
+                                    {/* <LocalForm onSubmit={values => this.handleSubmit(values)}>
                                         <div ClassName="form-group row">
                                             <Label htmlFor="title" sm={2}>Title</Label>
                                             <Col sm={10}>
@@ -107,7 +135,43 @@ class Create extends Component {
                                         <div ClassName="form-group row">
                                             <Button type="Submit">Create</Button>
                                         </div>
-                                    </LocalForm>
+                                    </LocalForm> */}
+                                    <form onSubmit={this.handleSubmit}>
+                                        <Input type="text" name="title" id="title" onChange={this.handleChange}/>
+                                        <Input type="select" name="category" id="category" onChange={this.handleChange} >
+                                        <option value="Automation">Automation</option>
+                                                    <option value="Crypto">Crypto</option>
+                                                    <option value="Data">Data</option>
+                                                    <option value="Game">Game</option>
+                                                    <option value="Web Design">Web Design</option>
+                                                    <option value="Other">Other</option>
+                                        </Input>
+                                        <Input type="textarea" name="description" id="description" onChange={this.handleChange}/>
+                                        <Input type="select" name="languages" id="languages" onChange={this.handleSelectedMultiple} multiple>
+                                                        <option value="HTML">HTML</option>
+                                                        <option value="CSS">CSS</option>
+                                                        <option value="JS">JS</option>
+                                                        <option value="Python">Python</option>
+                                                        <option value="C">C</option>
+                                                        <option value="C#">C#</option>
+                                                        <option value="C++">C++</option>
+                                        </Input>
+                                        <Input type="number" name="teamSize" id="teamSize" onChange={this.handleChange}/>
+                                        <Input type="select" name="yearsOfExp" id="yearsOfExp" onChange={this.handleChange} >
+                                        <option value="&lt;1 year">&lt;1 year</option>
+                                                    <option value="1-3 years">1-3 years</option>
+                                                    <option value="3-5 years">3-5 years</option>
+                                                    <option value="5-10 years">5-10 years</option>
+                                                    <option value="10+ years">10+ years</option>
+                                        </Input>
+                                        <Input type="select" name="time" id="time" onChange={this.handleChange} >
+                                                    <option value="5-10 hours">5-10 hours</option>
+                                                    <option value="10-20 hours">10-20 hours</option>
+                                                    <option value="20-40 hours">20-40 hours</option>
+                                                    <option value="40+ hours">40+ hours</option>
+                                        </Input>
+                                        <Input type="submit" value="Submit" />
+                                    </form>
                                 </CardBody>
                             </Card>
                         </Col>
