@@ -34,7 +34,6 @@ class HeaderNoLogin extends Component {
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         // this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
     }
 
     toggleNav() {
@@ -47,10 +46,6 @@ class HeaderNoLogin extends Component {
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
-    }
-
-    handleLogin(values) {
-        this.toggleModal();
     }
 
     render() {
@@ -142,7 +137,7 @@ class HeaderNoLogin extends Component {
                                     </div>
                                 </Row>
                                 <Row className="form-group">
-                                    <Button onClick={this.props.onClick} type="submit" color="primary">Login</Button>
+                                    <Button onClick={this.props.loginHandler} type="submit" color="primary">Login</Button>
                                 </Row>
                             </LocalForm>
                         </div>

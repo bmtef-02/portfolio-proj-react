@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react';
+import React from 'react';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
-import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Col, Row, Badge } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent'
 

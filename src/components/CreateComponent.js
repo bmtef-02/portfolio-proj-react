@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody, CardText, Button, Form, FormGroup, Input, Label, Col, Row } from 'reactstrap';
-import { Link } from 'react-router-dom'
-import { render } from 'react-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Card, CardBody, Input, Col, Row } from 'reactstrap';
 
 class Create extends Component {
     constructor(props) {

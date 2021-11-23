@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Header from "./HeaderComponent"
 import HeaderNoLogin from './HeaderNoLoginComponent';
 
+// Test to see if login branch on git works
+
 class HeaderConditional extends Component {
     
     constructor(props) {
@@ -11,10 +13,10 @@ class HeaderConditional extends Component {
             isLoggedIn: false
         };
 
-        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.loginHandler = this.loginHandler.bind(this);
     }
 
-    handleLoginClick() {
+    loginHandler() {
         this.setState({
             isLoggedIn: !this.state.isLoggedIn
         });
@@ -26,7 +28,7 @@ class HeaderConditional extends Component {
         if (isLoggedIn) {
             return <Header />
         } else {
-            return <HeaderNoLogin onClick={this.handleLoginClick}/>
+            return <HeaderNoLogin loginHandler={this.loginHandler}/>
         }
     }
 }

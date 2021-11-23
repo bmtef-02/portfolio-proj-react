@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Jumbotron,
-    Container, Row, Col  } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { Loading } from '../components/LoadingComponent'
+import { withRouter } from 'react-router-dom';
     
 
 class Home extends Component {
