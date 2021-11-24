@@ -40,6 +40,7 @@ class SearchBar extends Component {
                                 type="select" 
                                 name="c" 
                                 id="projCategory">
+                                <option value="none">None</option>
                                 <option value="automation">Automation</option>
                                 <option value="crypto">Crypto</option>
                                 <option value="data">Data</option>

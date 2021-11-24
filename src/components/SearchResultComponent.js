@@ -45,8 +45,16 @@ function SearchResult(props) {
     const cat = new URLSearchParams(search).get('c');
     console.log('category dropdown: ' + cat)
     const filterProjects = (projects, query, cat) => {
-        if (!query && !cat) {
+        if (!query && cat === 'none') {
             return projects;
+        }
+        else if (query && cat ==='none') {
+            return projects.filter((project) => {
+                const projectTitle = project.title.toLowerCase();
+                const projectDescription = project.description.toLowerCase();
+                console.log('from projects array: ' + project.category)
+                return (projectTitle.includes(query) || projectDescription.includes(query)) 
+            })
         }
         else if (!query) {
             return projects.filter((project) => {
@@ -84,7 +92,7 @@ function SearchResult(props) {
         return( 
         <>
             <SearchBar class="remove-margin" />
-            <SearchFilter class="remove-margin" />
+            {/* <SearchFilter class="remove-margin" /> */}
             <Loading />
         </>
         )
@@ -94,7 +102,7 @@ function SearchResult(props) {
         <React.Fragment>
             <div>
                 <SearchBar class="remove-margin" />
-                <SearchFilter class="remove-margin" />
+                {/* <SearchFilter class="remove-margin" /> */}
             </div>
             <div className="row">
                 {projects}

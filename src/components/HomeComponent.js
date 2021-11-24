@@ -24,7 +24,7 @@ class Home extends Component {
                 </Jumbotron>
                 <div className="center">
                     <SearchBar colSpan="10" />
-                    <SearchFilter />
+                    {/* <SearchFilter /> */}
                 </div>
             </React.Fragment>
         )
