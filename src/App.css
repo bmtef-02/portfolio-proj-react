@@ -47,3 +47,7 @@ body {
   align-items: flex-start;
 }
 
+.jumbotron {
+  background-color: white !important ;
+}
+
