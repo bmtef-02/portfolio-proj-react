@@ -9,16 +9,16 @@ class SearchHome extends Component {
             <React.Fragment>
                 <Container className={this.props.class}>
                 <Form action="/search-results" method="get">
-                    <Row className="mb-2">
+                    <Row>
+                        <h2>What do you want to build?</h2>
+                    </Row>
+                    <Row className="mb-2"> 
                         <Col xs={this.props.colSpan}>
                             <Input 
                                 type="text" 
                                 placeholder="Search" 
                                 id="project-search" 
                                 name="s"/>     
-                        </Col>
-                        <Col>
-                            <Button type="submit" className="btn btn-primary">Search</Button>
                         </Col>
                         <Col>
                         <Link to='search-results?s=&c=automation'><Badge pill bg="primary">Automation</Badge></Link>
@@ -29,8 +29,14 @@ class SearchHome extends Component {
                         <Link to='search-results?s=&c=Other'><Badge pill bg="primary">Other</Badge></Link>
                         </Col>
                     </Row>
+                    <Row>
+                        <Col>
+                            <Button type="submit" className="btn btn-primary">Search</Button>
+                        </Col>
+                    </Row>
                 </Form>
                 </Container>
+
             </React.Fragment>
         )
     }
