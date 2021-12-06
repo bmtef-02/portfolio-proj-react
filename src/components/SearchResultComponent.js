@@ -42,13 +42,13 @@ function SearchResult(props) {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     console.log('search query:' + query)
-    const cat = new URLSearchParams(search).get('c');
+    let cat = new URLSearchParams(search).get('c');
     console.log('category dropdown: ' + cat)
     const filterProjects = (projects, query, cat) => {
-        if (!query && cat === 'none') {
+        if (!query && (cat === 'none' || cat === null)) {
             return projects;
         }
-        else if (query && cat ==='none') {
+        else if (query && (cat === 'none' || cat === null)) {
             return projects.filter((project) => {
                 const projectTitle = project.title.toLowerCase();
                 const projectDescription = project.description.toLowerCase();
@@ -81,6 +81,7 @@ function SearchResult(props) {
     // const result_list = props.projects.filter(project => project.category === search_category)
     // This function maps through the PROJECTS array and passes each object to SearchResultItem
     const projects = filteredProjects.map(project => {
+
         return (
             <div key={project.id} className="col-xl-3 col-md-4 col-6">
                 <SearchResultItem project={project} />
@@ -95,6 +96,15 @@ function SearchResult(props) {
             {/* <SearchFilter class="remove-margin" /> */}
             <Loading />
         </>
+        )
+    }
+
+    if (filteredProjects.length < 1) {
+        return(
+            <>
+            <SearchBar />
+            <p>Oops! No projects match your search criteria. Try broadening your search.</p>
+            </>
         )
     }
 

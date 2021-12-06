@@ -4,9 +4,14 @@ import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitl
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from '../components/LoadingComponent';
 
+
 class Project extends Component {
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
 
     render() { 

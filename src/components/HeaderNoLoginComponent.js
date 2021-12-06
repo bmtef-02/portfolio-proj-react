@@ -72,7 +72,7 @@ class HeaderNoLogin extends Component {
                                 <NavLink className="nav-link text-muted" to="/loading"> About Us</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink className="nav-link text-muted" to="/"> Explore</NavLink>
+                                <NavLink className="nav-link text-muted" to="/search-results"> Explore</NavLink>
                             </NavItem>
                         </Nav>
                         <span className="navbar-text">

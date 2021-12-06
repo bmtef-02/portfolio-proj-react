@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col  } from 'reactstrap';
-import SearchBar from './SearchBarComponent';
-import SearchFilter from './SearchFilterComponent';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import SearchHome from './SearchHomeComponent';
+// import SearchBar from './SearchBarComponent';
+// import SearchFilter from './SearchFilterComponent';
+import { Switch, Route, Redirect, withRouter, NavLink } from 'react-router-dom';
 import { Loading } from '../components/LoadingComponent'
     
 class Home extends Component {
@@ -19,10 +20,12 @@ class Home extends Component {
                             </div>
                             <div classNam="col">
                                     <button>Get Started</button>
+                                    <NavLink to="/search-results?s=&c=none">Search Results</NavLink>
                             </div>
                         </div>
                     </div>
                 </Jumbotron>
+                <SearchHome />
             </React.Fragment>
         )
     }
