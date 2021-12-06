@@ -4,6 +4,7 @@ import SearchHome from './SearchHomeComponent';
 // import SearchBar from './SearchBarComponent';
 // import SearchFilter from './SearchFilterComponent';
 import { Switch, Route, Redirect, withRouter, NavLink } from 'react-router-dom';
+import JoinCreate from './JoinCreateComponent';
 import { Loading } from '../components/LoadingComponent'
     
 class Home extends Component {
@@ -25,6 +26,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </Jumbotron>
+                <JoinCreate />
                 <SearchHome />
             </React.Fragment>
         )

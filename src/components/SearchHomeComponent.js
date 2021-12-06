@@ -20,15 +20,17 @@ class SearchHome extends Component {
                         <Col>
                             <Button type="submit" className="btn btn-primary">Search</Button>
                         </Col>
+                        <Col>
+                        <Link to='search-results?s=&c=automation'><Badge pill bg="primary">Automation</Badge></Link>
+                        <Link to='search-results?s=&c=crypto'><Badge pill bg="primary">Crypto</Badge></Link>
+                        <Link to='search-results?s=&c=data'><Badge pill bg="primary">Data</Badge></Link>
+                        <Link to='search-results?s=&c=game'><Badge pill bg="primary">Game</Badge></Link>
+                        <Link to='search-results?s=&c=web+design'><Badge pill bg="primary">Web Design</Badge></Link>
+                        <Link to='search-results?s=&c=Other'><Badge pill bg="primary">Other</Badge></Link>
+                        </Col>
                     </Row>
                 </Form>
                 </Container>
-                <Link to='search-results?s=&c=automation'><Badge pill bg="primary">Automation</Badge></Link>
-                <Link to='search-results?s=&c=crypto'><Badge pill bg="primary">Crypto</Badge></Link>
-                <Link to='search-results?s=&c=data'><Badge pill bg="primary">Data</Badge></Link>
-                <Link to='search-results?s=&c=game'><Badge pill bg="primary">Game</Badge></Link>
-                <Link to='search-results?s=&c=web+design'><Badge pill bg="primary">Web Design</Badge></Link>
-                <Link to='search-results?s=&c=Other'><Badge pill bg="primary">Other</Badge></Link>
             </React.Fragment>
         )
     }
