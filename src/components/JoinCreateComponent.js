@@ -1,8 +1,5 @@
-import { blue, red } from '@mui/material/colors';
 import React from 'react';
-import { Container, Row, Col, 
-            Card, CardBody, CardText, CardLink } from 'reactstrap';
-import { baseUrl } from '../shared/baseUrl';
+import { Container, Row, Col } from 'reactstrap';
 
 function JoinCreate() {
     return (
