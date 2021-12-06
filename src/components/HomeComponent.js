@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Jumbotron, Container, Row, Col  } from 'reactstrap';
-import SearchBar from './SearchBarComponent';
-import SearchFilter from './SearchFilterComponent';
+import JoinCreate from './JoinCreateComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { Loading } from '../components/LoadingComponent'
     
@@ -23,6 +22,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </Jumbotron>
+                <JoinCreate />
             </React.Fragment>
         )
     }

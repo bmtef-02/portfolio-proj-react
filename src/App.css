@@ -51,3 +51,33 @@ body {
   background-color: white !important ;
 }
 
+/* Styling for JoinCreateComponent */
+
+.joinCreateContainer {
+  background-color: white;
+}
+
+.joinCreateHeader {
+  color: black;
+  text-align: center;
+}
+
+.joinCreateText {
+  color: black;
+  text-align: center;
+}
+
+.joinCreateParagraph {
+  color: black;
+  text-align: center;
+  margin: 0px 150px;
+}
+
+.joinCreateRow {
+  justify-content: center;
+}
+
+.joinCreateCol {
+  text-align: center;
+}
+/************************************************************************************************/
