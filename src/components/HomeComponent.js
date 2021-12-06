@@ -9,6 +9,10 @@ import { Loading } from '../components/LoadingComponent'
     
 class Home extends Component {
 
+    componentDidMount() {
+        window.scrollTo(0,0);
+    }
+
     render() {
         return(
             <React.Fragment>

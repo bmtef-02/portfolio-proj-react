@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import SearchBar from './SearchBarComponent';
 import SearchFilter from './SearchFilterComponent';
 import { Card, CardImg, CardText, CardBody, CardDeck, Breadcrumb, BreadcrumbItem, CardTitle, Col, Row, Badge } from 'reactstrap';
@@ -39,6 +39,11 @@ function SearchResultItem({project}) {
 
 // This function renders the SearcBar, SearchFilter, and project Cards component
 function SearchResult(props) {
+    
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
     console.log('search query:' + query)
