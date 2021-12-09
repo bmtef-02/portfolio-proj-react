@@ -42,7 +42,6 @@ class Main extends Component {
     }
 
     render() {
-        
         const ProjectWithId = ({match}) => {
             return(
                 <Project 
@@ -59,10 +58,16 @@ class Main extends Component {
                 <HeaderConditional />
                 <Switch>
                     <Route exact path='/' render={() =>
-                            <Home />
+                            <Home 
+                                projects={this.props.projects}
+                                projectsLoading={this.props.projects.isLoading}
+                            />
                         } />
                     <Route exact path='/home' render={() =>
-                            <Home />
+                            <Home 
+                                projects={this.props.projects}
+                                projectsLoading={this.props.projects.isLoading}
+                            />
                         } />
                     <Route path='/search-results' render={() => <SearchResult projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} />} />
                     <Route path='/projects/:projectId' component={ProjectWithId} />

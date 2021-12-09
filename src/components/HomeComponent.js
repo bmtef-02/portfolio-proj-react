@@ -5,15 +5,22 @@ import SearchHome from './SearchHomeComponent';
 // import SearchFilter from './SearchFilterComponent';
 import { Switch, Route, Redirect, withRouter, NavLink } from 'react-router-dom';
 import JoinCreate from './JoinCreateComponent';
+import FeaturedProjects from './FeaturedProjects';
 import { Loading } from '../components/LoadingComponent'
+import { baseUrl } from '../shared/baseUrl';
     
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
         window.scrollTo(0,0);
     }
 
     render() {
+
         return(
             <React.Fragment>
                 <Jumbotron className="home-jumbotron mb-5">
@@ -31,6 +38,7 @@ class Home extends Component {
                     </div>
                 </Jumbotron>
                 <JoinCreate />
+                <FeaturedProjects />
                 <SearchHome />
             </React.Fragment>
         )

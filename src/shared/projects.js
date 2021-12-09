@@ -10,7 +10,8 @@ export const PROJECTS = [
         "time": "<5 hours",
         "owner_id": 1,
         "team_id": [],
-        "team_size": 6
+        "team_size": 6,
+        "featured": false
     },
     {
         "id": 1,
@@ -23,7 +24,8 @@ export const PROJECTS = [
         "time": "5-10 hours",
         "owner_id": 1,
         "team_id": [0, 1, 3],
-        "team_size": 4
+        "team_size": 4,
+        "featured": false
     },
     {
         "id": 2,
@@ -36,7 +38,8 @@ export const PROJECTS = [
         "time": "10-20 hours",
         "owner_id": 1,
         "team_id":[2],
-        "team_size": 3
+        "team_size": 3,
+        "featured": false
     },
     {
         "id": 3,
@@ -49,7 +52,8 @@ export const PROJECTS = [
         "time": "20-40 hours",
         "owner_id": 1,
         "team_id": [2,4],
-        "team_size": 2
+        "team_size": 2,
+        "featured": false
     },
     {
         "id": 4,
@@ -62,7 +66,8 @@ export const PROJECTS = [
         "time": "40+ hours",
         "owner_id": 0,
         "team_id": [2,4],
-        "team_size": 3
+        "team_size": 3,
+        "featured": false
     },
     {
         "id": 5,
@@ -75,7 +80,8 @@ export const PROJECTS = [
         "time": "<5 hours",
         "owner_id": 1,
         "team_id": [0,3,4,5,2],
-        "team_size": 7
+        "team_size": 7,
+        "featured": true
     },
     {
         "id": 6,
@@ -88,7 +94,8 @@ export const PROJECTS = [
         "time": "10-20 hours",
         "owner_id": 3,
         "team_id": [2,4,5,1],
-        "team_size": 4
+        "team_size": 4,
+        "featured": true
     },
     {
         "id": 7,
@@ -101,7 +108,8 @@ export const PROJECTS = [
         "time": "5-10 hours",
         "owner_id": 5,
         "team_id": [0,1,3],
-        "team_size": 6
+        "team_size": 6,
+        "featured": true
     },
 
 

@@ -39,7 +39,7 @@ function SearchResultItem({project}) {
 
 // This function renders the SearcBar, SearchFilter, and project Cards component
 function SearchResult(props) {
-    
+
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])

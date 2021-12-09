@@ -80,4 +80,21 @@ body {
 .joinCreateCol {
   text-align: center;
 }
-/************************************************************************************************/
+/***********************************************/
+
+/* Styling for FeaturedProjects */
+
+.featuredContainer {
+  background-color: white;
+}
+
+.featuredHeader {
+  color: black;
+  text-align: center;
+}
+
+.featuredImg {
+  width: 100%;
+}
+
+/***********************************************/
