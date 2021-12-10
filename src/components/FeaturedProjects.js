@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Badge } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { PROJECTS } from '../shared/projects';
+import { style } from '@mui/system';
 
 
 class FeaturedProjects extends Component {
@@ -16,7 +17,34 @@ class FeaturedProjects extends Component {
 
     render() {
         
-        const featured = this.state.projects.filter(project => project.featured)
+        const arrFeatured = this.state.projects.filter(project => project.featured);
+
+        const featuredProject = arrFeatured.map(project => {
+            return (
+                <Col key={project.id} className="mx-5">
+                    <Link to={`/projects/${project.id}`}>
+                        <div>
+                            <img
+                                src={project.img}
+                                className="featuredImg"
+                            />
+                        </div>
+                        <div>
+                            <h4 className="featuredHeader">{project.title}</h4>
+                        </div>
+                        <Row className="featuredRow">
+                            {project.languages.map(language => {
+                                return (
+                                    <Col className="featuredCol" xs="auto">
+                                        <Badge pill>{language}</Badge>
+                                    </Col>
+                                )
+                            })}
+                        </Row>
+                    </Link>
+                </Col>
+            )
+        });
 
         return (
             <Container fluid className="featuredContainer">
@@ -28,51 +56,8 @@ class FeaturedProjects extends Component {
                         <a href="/search-results">Explore More Projects</a>
                     </Col>
                 </Row>
-                <Row>
-                    <Col key={featured[0].id}>
-                        <Link to={`/projects/${featured[0].id}`}>
-                            <div>
-                                <img 
-                                    src="/assets/images/placeholder-img.jpg"
-                                    className="featuredImg"
-                                />
-                            </div>
-                            <div>
-                                <h3>{featured[0].title}</h3>
-                            </div>
-                            <div>
-                                <p>{featured[0].description}</p>
-                            </div>
-                        </Link>
-                    </Col>
-                    <Col>
-                        <div>
-                            <img 
-                                src="/assets/images/placeholder-img.jpg"
-                                className="featuredImg"
-                            />
-                        </div>
-                        <div>
-                            <h3>{featured[1].title}</h3>
-                        </div>
-                        <div>
-                            <p>{featured[1].description}</p>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div>
-                            <img 
-                                src="/assets/images/placeholder-img.jpg"
-                                className="featuredImg"
-                            />
-                        </div>
-                        <div>
-                            <h3>{featured[2].title}</h3>
-                        </div>
-                        <div>
-                            <p>{featured[2].description}</p>
-                        </div>
-                    </Col>
+                <Row className="mx-5">
+                    {featuredProject}
                 </Row>
             </Container>
         );
