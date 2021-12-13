@@ -51,10 +51,40 @@ body {
   background-color: white !important ;
 }
 
+/* Styling to Jumbotron */
+.jumboContainer {
+  background-color: white;
+  padding-top: 50px;
+}
+
+.jumboRow {
+  margin-left: 150px;
+  margin-right: 150px;
+  align-items: center;
+}
+
+.jumboCol {
+  text-align: right;
+}
+
+.jumboHeader1 {
+  color: black;
+}
+
+.jumboHeader2 {
+  color: #0d6efd;
+}
+
+.breakpoint {
+  justify-content: center;
+}
+/***********************************************/
+
 /* Styling for JoinCreateComponent */
 
 .joinCreateContainer {
   background-color: white;
+  padding-top: 50px;
 }
 
 .joinCreateHeader {
@@ -67,10 +97,10 @@ body {
   text-align: center;
 }
 
-.joinCreateParagraph {
+.joinCreateDescrip {
   color: black;
   text-align: center;
-  margin: 0px 150px;
+  margin: 0px 200px;
 }
 
 .joinCreateRow {
@@ -80,17 +110,62 @@ body {
 .joinCreateCol {
   text-align: center;
 }
+
+.joinCreatePara {
+  color: black;
+}
+/***********************************************/
+
+/* Styling for SearchHomeBJ */
+.searchContainer {
+  background-color: white;
+  padding-top: 50px;
+}
+
+.searchRowTitle {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.searchHeaderTitle {
+  color: black;
+}
+
+.searchRowPill {
+  text-align: center;
+}
+
+.searchPill {
+  padding: 10px 20px;
+  font-size: 15px;
+}
 /***********************************************/
 
 /* Styling for FeaturedProjects */
 
 .featuredContainer {
   background-color: white;
+  padding-top: 50px;
 }
 
-.featuredHeader {
+.featuredRowTitle {
+  margin-left: 150px;
+  margin-right: 150px;
+  align-items: center;
+}
+
+.featuredHeaderTitle {
+  color: black;
+}
+
+.featuredHeaderProj {
   color: black;
   text-align: center;
+}
+
+.featuredRowProj {
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .featuredImg {
@@ -100,13 +175,21 @@ body {
   border-radius: 20px;
 }
 
-.featuredRow {
+.featuredRowLang {
   justify-content: center;
 }
 
-.featuredCol {
-  text-align: center;
+.featuredColLang {
   padding: 0px 5px
-}
+} 
 
 /***********************************************/
+
+.borderTest {
+  border: 1px black solid
+}
+
+.rowTest {
+  margin-left: 100px;
+  margin-right: 100px;
+}

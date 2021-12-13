@@ -16,12 +16,14 @@ class FeaturedProjects extends Component {
     }
 
     render() {
+
+        const breakpoint = "\u003C\u002F\u003E"
         
         const arrFeatured = this.state.projects.filter(project => project.featured);
 
         const featuredProject = arrFeatured.map(project => {
             return (
-                <Col key={project.id} className="mx-5">
+                <Col key={project.id}>
                     <Link to={`/projects/${project.id}`}>
                         <div>
                             <img
@@ -30,12 +32,12 @@ class FeaturedProjects extends Component {
                             />
                         </div>
                         <div>
-                            <h4 className="featuredHeader">{project.title}</h4>
+                            <h5 className="featuredHeaderProj">{project.title}</h5>
                         </div>
-                        <Row className="featuredRow">
+                        <Row className="featuredRowLang">
                             {project.languages.map(language => {
                                 return (
-                                    <Col className="featuredCol" xs="auto">
+                                    <Col className="featuredColLang" xs="auto">
                                         <Badge pill>{language}</Badge>
                                     </Col>
                                 )
@@ -48,15 +50,15 @@ class FeaturedProjects extends Component {
 
         return (
             <Container fluid className="featuredContainer">
-                <Row>
+                <Row className="featuredRowTitle">
                     <Col>
-                        <h1 className="featuredHeader">Featured Projects</h1>
+                        <h1 className="featuredHeaderTitle">Featured Projects</h1>
                     </Col>
-                    <Col>
-                        <a href="/search-results">Explore More Projects</a>
+                    <Col style={{textAlign: "right"}}>
+                        <h5><a href="/search-results">Explore More Projects</a></h5>
                     </Col>
                 </Row>
-                <Row className="mx-5">
+                <Row className="featuredRowProj">
                     {featuredProject}
                 </Row>
             </Container>
