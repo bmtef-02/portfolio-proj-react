@@ -137,38 +137,48 @@ class Create extends Component {
                                         </div>
                                     </LocalForm> */}
                                     <form onSubmit={this.handleSubmit}>
+                                        <Label for="title">Project Title</Label>
                                         <Input type="text" name="title" id="title" onChange={this.handleChange}/>
+                                        <Label for="category">Project Category</Label>
                                         <Input type="select" name="category" id="category" onChange={this.handleChange} >
-                                        <option value="Automation">Automation</option>
-                                                    <option value="Crypto">Crypto</option>
-                                                    <option value="Data">Data</option>
-                                                    <option value="Game">Game</option>
-                                                    <option value="Web Design">Web Design</option>
-                                                    <option value="Other">Other</option>
+                                                <option hidden value="">--</option>
+                                                <option value="Automation">Automation</option>
+                                                <option value="Crypto">Crypto</option>
+                                                <option value="Data">Data</option>
+                                                <option value="Game">Game</option>
+                                                <option value="Web Design">Web Design</option>
+                                                <option value="Other">Other</option>
                                         </Input>
+                                        <Label for="description">Project Description</Label>
                                         <Input type="textarea" name="description" id="description" onChange={this.handleChange}/>
+                                        <Label for="languages">Languages Needed</Label>
                                         <Input type="select" name="languages" id="languages" onChange={this.handleSelectedMultiple} multiple>
-                                                        <option value="HTML">HTML</option>
-                                                        <option value="CSS">CSS</option>
-                                                        <option value="JS">JS</option>
-                                                        <option value="Python">Python</option>
-                                                        <option value="C">C</option>
-                                                        <option value="C#">C#</option>
-                                                        <option value="C++">C++</option>
+                                                <option value="HTML">HTML</option>
+                                                <option value="CSS">CSS</option>
+                                                <option value="JS">JS</option>
+                                                <option value="Python">Python</option>
+                                                <option value="C">C</option>
+                                                <option value="C#">C#</option>
+                                                <option value="C++">C++</option>
                                         </Input>
+                                        <Label for="teamSize">Team Members Needed</Label>
                                         <Input type="number" name="teamSize" id="teamSize" onChange={this.handleChange}/>
+                                        <Label for="yearsOfExp">Years of Experience</Label>
                                         <Input type="select" name="yearsOfExp" id="yearsOfExp" onChange={this.handleChange} >
-                                        <option value="&lt;1 year">&lt;1 year</option>
-                                                    <option value="1-3 years">1-3 years</option>
-                                                    <option value="3-5 years">3-5 years</option>
-                                                    <option value="5-10 years">5-10 years</option>
-                                                    <option value="10+ years">10+ years</option>
+                                            <option hidden value="">--</option>
+                                            <option value="&lt;1 year">&lt;1 year</option>
+                                            <option value="1-3 years">1-3 years</option>
+                                            <option value="3-5 years">3-5 years</option>
+                                            <option value="5-10 years">5-10 years</option>
+                                            <option value="10+ years">10+ years</option>
                                         </Input>
+                                        <Label for="time">Weekly Time Commitment</Label>
                                         <Input type="select" name="time" id="time" onChange={this.handleChange} >
-                                                    <option value="5-10 hours">5-10 hours</option>
-                                                    <option value="10-20 hours">10-20 hours</option>
-                                                    <option value="20-40 hours">20-40 hours</option>
-                                                    <option value="40+ hours">40+ hours</option>
+                                            <option hidden value="">--</option>
+                                            <option value="5-10 hours">5-10 hours</option>
+                                            <option value="10-20 hours">10-20 hours</option>
+                                            <option value="20-40 hours">20-40 hours</option>
+                                            <option value="40+ hours">40+ hours</option>
                                         </Input>
                                         <Input type="submit" value="Submit" />
                                     </form>
