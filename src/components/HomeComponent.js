@@ -38,8 +38,8 @@ class Home extends Component {
                     </div>
                 </Jumbotron>
                 <JoinCreate />
-                <FeaturedProjects />
                 <SearchHome />
+                <FeaturedProjects />
             </React.Fragment>
         )
     }
