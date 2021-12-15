@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container, Row, Col  } from 'reactstrap';
+import { Jumbotron, Container, Row, Col,
+    Button } from 'reactstrap';
 import SearchHome from './SearchHomeComponent';
 // import SearchBar from './SearchBarComponent';
 // import SearchFilter from './SearchFilterComponent';
 import { Switch, Route, Redirect, withRouter, NavLink } from 'react-router-dom';
 import JoinCreate from './JoinCreateComponent';
-import FeaturedProjects from './FeaturedProjects';
+import FeaturedProjects from './FeaturedProjectsComponent';
+import SearchHomeBJ from './SearchHomeComponentBJ';
 import { Loading } from '../components/LoadingComponent'
 import { baseUrl } from '../shared/baseUrl';
     
@@ -21,9 +23,11 @@ class Home extends Component {
 
     render() {
 
+        const breakpoint = "\u003C\u002F\u003E"
+
         return(
             <React.Fragment>
-                <Jumbotron className="home-jumbotron mb-5">
+                {/* <Jumbotron className="home-jumbotron mb-5 jumboTest">
                     <div className="container">
                         <div className="row">
                             <div className="col">
@@ -36,9 +40,24 @@ class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </Jumbotron>
+                </Jumbotron> */}
+                <Container className="jumboContainer" fluid>
+                    <Row className="jumboRow">
+                        <Col xs="4">
+                            <h1 className="jumboHeader1">Ready to Collaborate?</h1>
+                            <h2 className="jumboHeader2">Good.</h2>
+                        </Col>
+                        <Col className="jumboCol">
+                            <Button color="primary">Get Started</Button>
+                        </Col>
+                    </Row>
+                    <Row className="breakpoint">
+                        <h1>{breakpoint}</h1>
+                    </Row>
+                </Container>
                 <JoinCreate />
-                <SearchHome />
+                {/* <SearchHome /> */}
+                <SearchHomeBJ />
                 <FeaturedProjects />
             </React.Fragment>
         )
