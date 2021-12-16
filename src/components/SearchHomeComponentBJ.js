@@ -14,12 +14,19 @@ class SearchHomeBJ extends Component {
                     <Row className="searchRowTitle">
                         <Col className="mr-5">
                             <h1 className="searchHeaderTitle">What do you want to build?</h1>
+                        <Form action="/search-results" method="get">
                             <div className="mb-3">
-                                <Input type="text" placeholder="Search" /> 
+                                <Input 
+                                    type="text" 
+                                    placeholder="Search" 
+                                    id="project-search" 
+                                    name="s"
+                                /> 
                             </div>
                             <div>
-                                <Button color="primary" block>Search</Button>
+                                <Button color="primary" type="submit" block>Search</Button>
                             </div>
+                        </Form>
                         </Col>
                         <Col className="ml-5">
                             <h1 className="searchHeaderTitle">Explore a topic</h1>
