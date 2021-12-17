@@ -16,7 +16,8 @@ class Create extends Component {
             description: null,
             languages: null, 
             yearsOfExp: null,
-            time: null
+            time: null,
+            languages_friendly: null
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,8 @@ class Create extends Component {
         // Or this way
        // const values = [...evt.target.selectedOptions].map(opt => opt.value)
         console.log('values', values);
-        this.setState({languages: values});
+        const languages_friendly = values.toString();
+        this.setState({languages: values, languages_friendly: languages_friendly});
       };
 
     handleSubmit(event) {
@@ -52,6 +54,7 @@ class Create extends Component {
             this.state.time
         );
         event.preventDefault();
+        
     }
 
     render() {
@@ -62,14 +65,86 @@ class Create extends Component {
                 <div className="container">
                     <Tabs defaultTab="vertical-tab-one" vertical>
                             <TabList>
-                                <Tab tabFor="vertical-tab-name"><i className="fa fa-pencil" aria-hidden="true"></i> Name</Tab>
-                                <Tab tabFor="vertical-tab-category"><i class="fa fa-th" aria-hidden="true"></i> Category</Tab>
-                                <Tab tabFor="vertical-tab-description"><i class="fa fa-align-justify" aria-hidden="true"></i> Description</Tab>
-                                <Tab tabFor="vertical-tab-languages"><i class="fa fa-code" aria-hidden="true"></i> Languages</Tab>
-                                <Tab tabFor="vertical-tab-teamSize"><i class="fa fa-users" aria-hidden="true"></i> Team Size</Tab>
-                                <Tab tabFor="vertical-tab-experience"><i class="fa fa-black-tie" aria-hidden="true"></i> Experience</Tab>
-                                <Tab tabFor="vertical-tab-time"><i class="fa fa-clock-o" aria-hidden="true"></i> Weekly Time Commitment</Tab>
-                                <Tab tabFor="vertical-tab-submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Review and Submit</Tab>
+                                <Tab tabFor="vertical-tab-name" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i className="fa fa-pencil" aria-hidden="true"></i> Name
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.title ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.title ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row>
+                                </Tab>  
+                                <Tab tabFor="vertical-tab-category" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-th" aria-hidden="true"></i> Category
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.category ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.category ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row>
+                                </Tab>
+                                <Tab tabFor="vertical-tab-description" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-align-justify" aria-hidden="true"></i> Description
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.description ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.description ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row>
+                                </Tab>
+                                <Tab tabFor="vertical-tab-languages" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-code" aria-hidden="true"></i> Languages
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.languages ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.languages ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row>
+                                </Tab>
+                                <Tab tabFor="vertical-tab-teamSize" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-users" aria-hidden="true"></i> Team Size
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.teamSize ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.teamSize ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row> 
+                                </Tab>
+                                <Tab tabFor="vertical-tab-experience" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-black-tie" aria-hidden="true"></i> Experience
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.yearsOfExp ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.yearsOfExp ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row> 
+                                </Tab>
+                                <Tab tabFor="vertical-tab-time" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i> Weekly Time Commitment
+                                        </Col> 
+                                        <Col className="complete-icon">
+                                            <i className={!this.state.time ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.time ? {color: "black"} : {color: "green"}}></i>
+                                        </Col>
+                                    </Row> 
+                                </Tab>
+                                <Tab tabFor="vertical-tab-submit" className="tab-button">
+                                    <Row>
+                                        <Col xs="9">
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i> Review and Submit
+                                        </Col> 
+                                        {/* <Col className="complete-icon">
+                                            <i className={!this.state.title ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.title ? {color: "black"} : {color: "green"}}></i>
+                                        </Col> */}
+                                    </Row> 
+                                </Tab>
                             </TabList>
                         <form onSubmit={this.handleSubmit}>
                             <TabPanel tabId="vertical-tab-name">
@@ -136,15 +211,34 @@ class Create extends Component {
                                     <option value="40+ hours">40+ hours</option>
                                 </Input>
                             </TabPanel>
+                            <TabPanel tabId="vertical-tab-submit">
+                                <h2>Review and Submit</h2>
+                                <p>Final check. Does everything look right? You can always click back and edit. When you're ready, create your project.</p>
+                                <h4>Name</h4>
+                                <p>{this.state.title}</p>
+                                <h4>Category</h4>
+                                <p>{this.state.category}</p>
+                                <h4>Description</h4>
+                                <p>{this.state.description}</p>
+                                <h4>Languages</h4>
+                                <p>{this.state.languages_friendly}</p>
+                                <h4>Team Size</h4>
+                                <p>{this.state.teamSize}</p>
+                                <h4>Experience</h4>
+                                <p>{this.state.yearsOfExp}</p>
+                                <h4>Weekly Time Commitment</h4>
+                                <p>{this.state.time}</p>
+                                <Input type="submit" value="Create my project" />
+                            </TabPanel>
                         </form>
                     </Tabs>
                     
                     
 
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <Card>
-                                <CardBody>
+                                <CardBody> */}
                                     {/* <LocalForm onSubmit={values => this.handleSubmit(values)}>
                                         <div ClassName="form-group row">
                                             <Label htmlFor="title" sm={2}>Title</Label>
@@ -265,10 +359,10 @@ class Create extends Component {
                                         </Input>
                                         <Input type="submit" value="Submit" />
                                     </form> */}
-                                </CardBody>
+                                {/* </CardBody>
                             </Card>
                         </Col>
-                    </Row>
+                    </Row> */}
                 </div>
             </div>
         )

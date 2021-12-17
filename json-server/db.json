@@ -302,17 +302,54 @@
       "id": 26
     },
     {
-      "title": null,
-      "category": null,
-      "teamSize": null,
-      "description": null,
-      "languages": null,
-      "yearsOfExp": null,
-      "time": null,
+      "title": "test",
+      "category": "Data",
+      "teamSize": 3,
+      "description": "This is a test description",
+      "languages": [
+        "C",
+        "C#",
+        "C++"
+      ],
+      "yearsOfExp": "3-5 years",
+      "time": "20-40 hours",
       "owner_id": 1,
       "team_id": [],
-      "date": "2021-12-16T06:35:25.161Z",
-      "id": 27
+      "date": "2021-12-16T19:49:55.130Z",
+      "id": 28
+    },
+    {
+      "title": "Test Vertical #1",
+      "category": "Data",
+      "teamSize": 3,
+      "description": "This is to test posting to the server from the vertical tab form. Also testing that languages is posted to the server as an array but listed in the summary as string",
+      "languages": [
+        "HTML",
+        "CSS",
+        "JS"
+      ],
+      "yearsOfExp": "3-5 years",
+      "time": "20-40 hours",
+      "owner_id": 1,
+      "team_id": [],
+      "date": "2021-12-16T20:10:12.626Z",
+      "id": 29
+    },
+    {
+      "title": "Test Project",
+      "category": "Data",
+      "teamSize": 3,
+      "description": "hello this is a description, or ",
+      "languages": [
+        "CSS",
+        "JS"
+      ],
+      "yearsOfExp": "3-5 years",
+      "time": "10-20 hours",
+      "owner_id": 1,
+      "team_id": [],
+      "date": "2021-12-17T00:11:03.025Z",
+      "id": 30
     }
   ],
   "users": [
