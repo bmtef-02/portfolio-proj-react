@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardBody, CardText, Button, Form, FormGroup, Input, Label, Col, Row } from 'reactstrap';
+import { Card, CardTitle, CardBody, CardText, Button, Form, FormGroup, Input, Label, Col, Row, FormFeedback, Tooltip } from 'reactstrap';
 import { Link } from 'react-router-dom'
 import { render } from 'react-dom';
 import { Tabs, Tab, TabPanel, TabList} from 'react-web-tabs';
@@ -17,11 +17,29 @@ class Create extends Component {
             languages: null, 
             yearsOfExp: null,
             time: null,
-            languages_friendly: null
+            languages_friendly: null,
+            tooltipOpen: false,
+            touched: {
+                title: false,
+                category: false,
+                teamSize: false,
+                description: false,
+                languages: false, 
+                yearsOfExp: false,
+                time: false,
+            }
+
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelectedMultiple = this.handleSelectedMultiple.bind(this);
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            tooltipOpen: !this.state.tooltipOpen
+        });
     }
 
     handleChange(event) {
@@ -43,7 +61,11 @@ class Create extends Component {
       };
 
     handleSubmit(event) {
-        
+        console.log('handlesubmit error check: ')
+        if (this.errors) {
+            alert ('Project has validation errors.')
+        }
+        else {
         this.props.postProject(
             this.state.title,
             this.state.category,
@@ -53,11 +75,39 @@ class Create extends Component {
             this.state.yearsOfExp,
             this.state.time
         );
+        }
         event.preventDefault();
-        
+
+    }
+
+    validate(title) {
+        const errors = {
+            title: ''
+        };
+
+        if (this.state.touched.title) {
+            console.log(this.state.touched.title)
+            console.log(title + ':' + title.length)
+
+            if(title.length > 50) {
+                console.log('validation error created')
+                errors.title = 'Name must be 50 characters or less'
+            }   
+        }
+
+        return errors;
+    }
+
+    handleBlur = (field) => () => {
+        this.setState({
+            touched: {...this.state.touched, [field]: true}
+        })
     }
 
     render() {
+
+        const errors = this.validate(this.state.title);
+        console.log(errors);
 
         return(
             <div>
@@ -71,7 +121,7 @@ class Create extends Component {
                                             <i className="fa fa-pencil" aria-hidden="true"></i> Name
                                         </Col> 
                                         <Col className="complete-icon">
-                                            <i className={!this.state.title ? "fa fa-circle-o" : "fa fa-check-circle-o"} aria-hidden="true" style={!this.state.title ? {color: "black"} : {color: "green"}}></i>
+                                            <i className={!this.state.title ? "fa fa-circle-o" : (!errors.title) ? "fa fa-check-circle-o" : "fa fa-times-circle-o"} aria-hidden="true" style={!this.state.title ? {color: "black"} : (!errors.title) ? {color: "green"} : {color: "red"}}></i>
                                         </Col>
                                     </Row>
                                 </Tab>  
@@ -150,7 +200,17 @@ class Create extends Component {
                             <TabPanel tabId="vertical-tab-name">
                                 <h2>Name</h2>
                                 <p>Use a short and simple name for your project. Don't worry you'll have more room to describe your project in the Description section.</p>
-                                <Input type="text" name="title" id="title" onChange={this.handleChange}/>
+                                <Input 
+                                    type="text" 
+                                    name="title" 
+                                    id="title" 
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlur('title')}
+                                    invalid={errors.title}
+                                />
+                                <FormFeedback>
+                                    {errors.title}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-category">
                                 <h2>Category</h2>
@@ -168,7 +228,10 @@ class Create extends Component {
                             <TabPanel tabId="vertical-tab-description">
                                 <h2>Description</h2>
                                 <p>Here's where you can spill all the beans on what your master plan is. Give a thorough explanation of what you're trying to build and the expections of what you need from your team. Spare no detail!</p>
-                                <Input type="textarea" name="description" id="description" onChange={this.handleChange}/>
+                                <Input 
+                                    type="textarea" name="description" id="description" 
+                                    rows={10}
+                                    onChange={this.handleChange}/>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-languages">
                                 <h2>Languages</h2>
@@ -228,7 +291,8 @@ class Create extends Component {
                                 <p>{this.state.yearsOfExp}</p>
                                 <h4>Weekly Time Commitment</h4>
                                 <p>{this.state.time}</p>
-                                <Input type="submit" value="Create my project" />
+                                <Input type="submit" id="form-submit" value="Create my project" />
+                                <Tooltip placement="bottom" isOpen={this.state.tooltipOpen} toggle={this.toggle} target="form-submit">Project submission has errors. Please resolve before you can create your project.</Tooltip>
                             </TabPanel>
                         </form>
                     </Tabs>
