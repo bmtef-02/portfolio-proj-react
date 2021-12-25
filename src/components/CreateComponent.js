@@ -61,8 +61,8 @@ class Create extends Component {
       };
 
     handleSubmit(event) {
-        console.log('handlesubmit error check: ')
-        if (this.errors) {
+        console.log(this.errors.title);
+        if (this.errors.title) {
             alert ('Project has validation errors.')
         }
         else {
@@ -80,19 +80,95 @@ class Create extends Component {
 
     }
 
-    validate(title) {
+    validate(title, category, description, languages, teamSize, yearsOfExp, time) {
         const errors = {
-            title: ''
+            title: '',
+            category: '',
+            description: '',
+            languages: '',
+            teamSize: '',
+            yearsOfExp: '',
+            time: ''
         };
 
         if (this.state.touched.title) {
-            console.log(this.state.touched.title)
-            console.log(title + ':' + title.length)
+            console.log(this.state.touched.title);
+            console.log(title)
 
-            if(title.length > 50) {
-                console.log('validation error created')
+            if(title === null) {
+                console.log('validation error created: title is required');
+                errors.title = 'Name is required.'
+            } else if(title.length > 50) {
+                console.log('validation error created: title is too long');
                 errors.title = 'Name must be 50 characters or less'
-            }   
+            }
+            
+        }
+        
+        if (this.state.touched.category) {
+            console.log(this.state.touched.category);
+            console.log(category)
+
+            if(category === null) {
+                console.log('validation error created: category is required');
+                errors.category = 'Select a category. If none of the categories apply, please select "Other".'
+            }
+            
+        }
+
+        if (this.state.touched.description) {
+            console.log(this.state.touched.description);
+            console.log(description)
+
+            if(description === null) {
+                console.log('validation error created: description is required');
+                errors.description = 'Description is required.'
+            }
+            
+        }
+
+        if (this.state.touched.languages) {
+            console.log(this.state.touched.languages);
+            console.log(languages)
+
+            if(languages === null) {
+                console.log('validation error created: languages is required');
+                errors.languages = 'At least one language selection is required.'
+            }
+            
+        }
+
+        if (this.state.touched.teamSize) {
+            console.log(this.state.touched.teamSize);
+            console.log(teamSize)
+
+            if(teamSize === null) {
+                console.log('validation error created: teamSize is required');
+                errors.teamSize = 'Choosing your team size is required.'
+            }
+            
+        }
+
+        if (this.state.touched.yearsOfExp) {
+            console.log(this.state.touched.yearsOfExp);
+            console.log(yearsOfExp)
+
+            if(yearsOfExp === null) {
+                console.log('validation error created: yearsOfExp is required');
+                errors.yearsOfExp = 'Years of experience is required'
+            }
+            
+        }
+
+        if (this.state.touched.time) {
+            console.log(this.state.touched.time);
+            console.log(time)
+
+            if(time === null) {
+                console.log('validation error created: time is required');
+                errors.time = 'Weekly time commitment is required.'
+            }
+            
         }
 
         return errors;
@@ -106,8 +182,8 @@ class Create extends Component {
 
     render() {
 
-        const errors = this.validate(this.state.title);
-        console.log(errors);
+        const errors = this.validate(this.state.title, this.state.category, this.state.description, this.state.languages, this.state.teamSize, this.state.yearsOfExp, this.state.time);
+        console.log(errors.title, errors.category, errors.description, this.state.languages, this.state.teamSize, this.state.yearsOfExp, this.state.time);
 
         return(
             <div>
@@ -215,7 +291,14 @@ class Create extends Component {
                             <TabPanel tabId="vertical-tab-category">
                                 <h2>Category</h2>
                                 <p>What category does your project best fit into? If you can't find one that matches your project, choose "Other"</p>
-                                <Input type="select" name="category" id="category" onChange={this.handleChange} >
+                                <Input 
+                                    type="select" 
+                                    name="category" 
+                                    id="category" 
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlur('category')}
+                                    invalid={errors.category} 
+                                >
                                     <option hidden value="">--</option>
                                     <option value="Automation">Automation</option>
                                     <option value="Crypto">Crypto</option>
@@ -224,19 +307,38 @@ class Create extends Component {
                                     <option value="Web Design">Web Design</option>
                                     <option value="Other">Other</option>
                                 </Input>
+                                <FormFeedback>
+                                    {errors.category}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-description">
                                 <h2>Description</h2>
                                 <p>Here's where you can spill all the beans on what your master plan is. Give a thorough explanation of what you're trying to build and the expections of what you need from your team. Spare no detail!</p>
                                 <Input 
-                                    type="textarea" name="description" id="description" 
+                                    type="textarea" 
+                                    name="description" 
+                                    id="description" 
                                     rows={10}
-                                    onChange={this.handleChange}/>
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlur('description')}
+                                    invalid={errors.description}
+                                />
+                                <FormFeedback>
+                                    {errors.description}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-languages">
                                 <h2>Languages</h2>
                                 <p>Finely tune your team by picking the languages you're envisioning your project to be build with. Choose as many as you'd like.</p>
-                                <Input type="select" name="languages" id="languages" onChange={this.handleSelectedMultiple} multiple>
+                                <Input 
+                                    type="select" 
+                                    name="languages" 
+                                    id="languages" 
+                                    onChange={this.handleSelectedMultiple} 
+                                    multiple
+                                    onBlur={this.handleBlur('languages')}
+                                    invalid={errors.languages}
+                                >
                                                 <option value="HTML">HTML</option>
                                                 <option value="CSS">CSS</option>
                                                 <option value="JS">JS</option>
@@ -245,40 +347,81 @@ class Create extends Component {
                                                 <option value="C#">C#</option>
                                                 <option value="C++">C++</option>
                                 </Input>
+                                <FormFeedback>
+                                    {errors.languages}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-teamSize">
                                 <h2>Team Size</h2>
                                 <p>This one's pretty simple. How many team members do you need?</p>
-                                <Input type="number" name="teamSize" id="teamSize" onChange={this.handleChange}/>
+                                <Input 
+                                    type="select" 
+                                    name="teamSize" 
+                                    id="teamSize" 
+                                    onChange={this.handleChange} 
+                                    onBlur={this.handleBlur('teamSize')}
+                                    invalid={errors.teamSize}
+                                >
+                                    <option hidden value="">--</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>     
+                                    <option value="7">7</option>                                
+                                </Input>
+                                <FormFeedback>
+                                    {errors.teamSize}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-experience">
                                 <h2>Experience</h2>
                                 <p>Some projects are harder than others. How many years of experience should your team members have?</p>
-                                <Input type="select" name="yearsOfExp" id="yearsOfExp" onChange={this.handleChange} >
+                                <Input 
+                                    type="select" 
+                                    name="yearsOfExp" 
+                                    id="yearsOfExp" 
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlur('yearsOfExp')}
+                                    invalid={errors.yearsOfExp} 
+                                >
                                             <option hidden value="">--</option>
                                             <option value="&lt;1 year">&lt;1 year</option>
                                             <option value="1-3 years">1-3 years</option>
                                             <option value="3-5 years">3-5 years</option>
                                             <option value="5-10 years">5-10 years</option>
                                             <option value="10+ years">10+ years</option>
-                                        </Input>
+                                </Input>
+                                <FormFeedback>
+                                    {errors.yearsOfExp}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-time">
                                 <h2>Weekly Time Commitment</h2>
                                 <p>Setting expectations on time commitment is important from the start. How many hours a week should your team be spending on your project?</p>
-                                <Input type="select" name="time" id="time" onChange={this.handleChange} >
+                                <Input 
+                                    type="select" 
+                                    name="time" 
+                                    id="time" 
+                                    onChange={this.handleChange}
+                                    onBlur={this.handleBlur('time')}
+                                    invalid={errors.time} 
+                                >
                                     <option hidden value="">--</option>
                                     <option value="5-10 hours">5-10 hours</option>
                                     <option value="10-20 hours">10-20 hours</option>
                                     <option value="20-40 hours">20-40 hours</option>
                                     <option value="40+ hours">40+ hours</option>
                                 </Input>
+                                <FormFeedback>
+                                    {errors.time}
+                                </FormFeedback>
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-submit">
                                 <h2>Review and Submit</h2>
                                 <p>Final check. Does everything look right? You can always click back and edit. When you're ready, create your project.</p>
                                 <h4>Name</h4>
-                                <p>{this.state.title}</p>
+                                <p>{this.state.title} - {errors.title}</p>
                                 <h4>Category</h4>
                                 <p>{this.state.category}</p>
                                 <h4>Description</h4>

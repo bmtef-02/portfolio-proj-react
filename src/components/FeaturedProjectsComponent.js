@@ -53,9 +53,9 @@ class FeaturedProjects extends Component {
                 <Row className="featuredRowTitle">
                     <Col>
                         <h1 className="featuredHeaderTitle">Featured Projects</h1>
-                    </Col>
+                    </Col> 
                     <Col style={{textAlign: "right"}}>
-                        <h5><a href="/search-results">Explore More Projects</a></h5>
+                        <h5><a href="/search-results?s=">Explore More Projects</a></h5>
                     </Col>
                 </Row>
                 <Row className="featuredRowProj">
