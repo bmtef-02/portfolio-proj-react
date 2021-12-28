@@ -63,6 +63,7 @@ function SearchResult(props) {
         }
         else if (query && (cat === 'none' || cat === null)) {
             return projects.filter((project) => {
+                console.log(project.title)
                 const projectTitle = project.title.toLowerCase();
                 const projectDescription = project.description.toLowerCase();
                 console.log('from projects array: ' + project.category)
@@ -71,6 +72,7 @@ function SearchResult(props) {
         }
         else if (!query) {
             return projects.filter((project) => {
+                console.log(project.title)
                 const projectCategory = project.category.toLowerCase();
                 console.log('projectCategory variable: ' + projectCategory)
                 console.log('from projects array: ' + project.category)
@@ -79,6 +81,7 @@ function SearchResult(props) {
         }
     
         return projects.filter((project) => {
+            console.log(project.title)
             const projectTitle = project.title.toLowerCase();
             const projectDescription = project.description.toLowerCase();
             const projectCategory = project.category.toLowerCase();
@@ -88,6 +91,7 @@ function SearchResult(props) {
         });
     };
 
+    console.log("Here are the projects as props: " + props.projects)
     const filteredProjects = filterProjects(props.projects, query, cat);
     console.log(filteredProjects)
 
