@@ -67,28 +67,6 @@ class SearchHomeBJ extends Component {
                     <Row className="breakpoint">
                         <h1>{breakpoint}</h1>
                     </Row>
-                    {/* <Row className="mb-2"> 
-                        <Col xs={this.props.colSpan}>
-                            <Input 
-                                type="text" 
-                                placeholder="Search" 
-                                id="project-search" 
-                                name="s"/>     
-                        </Col>
-                        <Col>
-                        <Link to='search-results?s=&c=automation'><Badge pill bg="primary">Automation</Badge></Link>
-                        <Link to='search-results?s=&c=crypto'><Badge pill bg="primary">Crypto</Badge></Link>
-                        <Link to='search-results?s=&c=data'><Badge pill bg="primary">Data</Badge></Link>
-                        <Link to='search-results?s=&c=game'><Badge pill bg="primary">Game</Badge></Link>
-                        <Link to='search-results?s=&c=web+design'><Badge pill bg="primary">Web Design</Badge></Link>
-                        <Link to='search-results?s=&c=Other'><Badge pill bg="primary">Other</Badge></Link>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Button type="submit" className="btn btn-primary">Search</Button>
-                        </Col>
-                    </Row> */}
                 </Container>
 
             </React.Fragment>
