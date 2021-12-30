@@ -2,6 +2,7 @@ export const ADD_PROJECTS = 'ADD_PROJECTS';
 export const PROJECTS_FAILED = "PROJECTS_FAILED";
 export const ADD_PROJECT = 'ADD_PROJECT';
 export const PROJECTS_LOADING = 'PROJECTS_LOADING';
+export const JOIN_TEAM = 'JOIN_TEAM';
 
 export const ADD_USERS = 'ADD_USERS';
 export const USERS_LOADING = 'USERS_LOADING';

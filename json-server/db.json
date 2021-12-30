@@ -301,6 +301,22 @@
       "team_id": [],
       "date": "2021-12-17T00:46:36.835Z",
       "id": 31
+    },
+    {
+      "title": "Testing Validation Handling",
+      "category": "Game",
+      "teamSize": 5,
+      "description": "This still allows for posting with validation errors",
+      "languages": [
+        "CSS",
+        "JS"
+      ],
+      "yearsOfExp": "3-5 years",
+      "time": "40+ hours",
+      "owner_id": 1,
+      "team_id": [],
+      "date": "2021-12-29T23:37:55.341Z",
+      "id": 32
     }
   ],
   "users": [

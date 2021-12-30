@@ -26,6 +26,8 @@ class Project extends Component {
         }
         const owner = this.props.users.filter(user=>this.props.project.owner_id === user.id)[0];
         const team_ids = this.props.project.team_id
+        console.log("Project ID: " + this.props.project.id)
+        console.log("Team IDs: " + team_ids)
         const team = [];
             for (let i=0; i<team_ids.length; i++) {
                 for (let j=0; j<this.props.users.length; j++) {
@@ -96,7 +98,7 @@ class Project extends Component {
                                 <h3 className="text-center">Project Team (Spots: {this.props.project.teamSize})</h3>
                                 <ul class="list-group list-group-flush">
                                     <ProjectTeam team={team} />
-                                    <Open unoccupied={unoccupied} />
+                                    <Open unoccupied={unoccupied} project_id={this.props.project.id} />
                                 </ul>
                             </Card>
                         </div>
@@ -130,11 +132,16 @@ function ProjectTeam({team}) {
     )
 }
 
-function Open({unoccupied}) {
+function Open({unoccupied, project_id}) {
+
+    const testClick = () => {
+        alert('Project ID: ' + project_id + ' User ID: 2')
+    }
+
     const op = unoccupied.map(() =>
         <li class="list-group-item">
             <div class="d-inline align-middle project-member">
-                <button class="btn btn-success ml-2">Join Team</button>
+                <button onClick={testClick} class="btn btn-success ml-2">Join Team</button>
             </div>
         </li>
 );

@@ -61,11 +61,6 @@ class Create extends Component {
       };
 
     handleSubmit(event) {
-        console.log(this.errors.title);
-        if (this.errors.title) {
-            alert ('Project has validation errors.')
-        }
-        else {
         this.props.postProject(
             this.state.title,
             this.state.category,
@@ -75,7 +70,7 @@ class Create extends Component {
             this.state.yearsOfExp,
             this.state.time
         );
-        }
+    
         event.preventDefault();
 
     }
@@ -170,7 +165,7 @@ class Create extends Component {
             }
             
         }
-
+        console.log("these are all the errors from the validate function: " + errors)
         return errors;
     }
 
@@ -183,7 +178,7 @@ class Create extends Component {
     render() {
 
         const errors = this.validate(this.state.title, this.state.category, this.state.description, this.state.languages, this.state.teamSize, this.state.yearsOfExp, this.state.time);
-        console.log(errors.title, errors.category, errors.description, this.state.languages, this.state.teamSize, this.state.yearsOfExp, this.state.time);
+        console.log(errors.title, errors.category, errors.description, errors.languages, errors.teamSize, errors.yearsOfExp, errors.time);
 
         return(
             <div>
@@ -276,6 +271,10 @@ class Create extends Component {
                             <TabPanel tabId="vertical-tab-name">
                                 <h2>Name</h2>
                                 <p>Use a short and simple name for your project. Don't worry you'll have more room to describe your project in the Description section.</p>
+                                <ul>
+                                    <li>Keep it simple and sweet</li>
+                                    <li>50 characters or less</li>
+                                </ul>
                                 <Input 
                                     type="text" 
                                     name="title" 
@@ -290,7 +289,7 @@ class Create extends Component {
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-category">
                                 <h2>Category</h2>
-                                <p>What category does your project best fit into? If you can't find one that matches your project, choose "Other"</p>
+                                <p>What category does your project best fit into? If you can't find one that matches your project, choose "Other"</p>   
                                 <Input 
                                     type="select" 
                                     name="category" 
@@ -313,7 +312,7 @@ class Create extends Component {
                             </TabPanel>
                             <TabPanel tabId="vertical-tab-description">
                                 <h2>Description</h2>
-                                <p>Here's where you can spill all the beans on what your master plan is. Give a thorough explanation of what you're trying to build and the expections of what you need from your team. Spare no detail!</p>
+                                <p>Spill the beans on your master plan. Give a thorough explanation of what you're building and the help you need from your team. Spare no details!</p>
                                 <Input 
                                     type="textarea" 
                                     name="description" 
@@ -339,13 +338,13 @@ class Create extends Component {
                                     onBlur={this.handleBlur('languages')}
                                     invalid={errors.languages}
                                 >
-                                                <option value="HTML">HTML</option>
-                                                <option value="CSS">CSS</option>
-                                                <option value="JS">JS</option>
-                                                <option value="Python">Python</option>
-                                                <option value="C">C</option>
-                                                <option value="C#">C#</option>
-                                                <option value="C++">C++</option>
+                                    <option value="HTML">HTML</option>
+                                    <option value="CSS">CSS</option>
+                                    <option value="JS">JS</option>
+                                    <option value="Python">Python</option>
+                                    <option value="C">C</option>
+                                    <option value="C#">C#</option>
+                                    <option value="C++">C++</option>
                                 </Input>
                                 <FormFeedback>
                                     {errors.languages}
@@ -385,12 +384,12 @@ class Create extends Component {
                                     onBlur={this.handleBlur('yearsOfExp')}
                                     invalid={errors.yearsOfExp} 
                                 >
-                                            <option hidden value="">--</option>
-                                            <option value="&lt;1 year">&lt;1 year</option>
-                                            <option value="1-3 years">1-3 years</option>
-                                            <option value="3-5 years">3-5 years</option>
-                                            <option value="5-10 years">5-10 years</option>
-                                            <option value="10+ years">10+ years</option>
+                                    <option hidden value="">--</option>
+                                    <option value="&lt;1 year">&lt;1 year</option>
+                                    <option value="1-3 years">1-3 years</option>
+                                    <option value="3-5 years">3-5 years</option>
+                                    <option value="5-10 years">5-10 years</option>
+                                    <option value="10+ years">10+ years</option>
                                 </Input>
                                 <FormFeedback>
                                     {errors.yearsOfExp}
@@ -421,19 +420,26 @@ class Create extends Component {
                                 <h2>Review and Submit</h2>
                                 <p>Final check. Does everything look right? You can always click back and edit. When you're ready, create your project.</p>
                                 <h4>Name</h4>
-                                <p>{this.state.title} - {errors.title}</p>
+                                <p>{this.state.title}</p>
+                                <p style={!errors.title ? {display: "none"} : {display: "block"}}>Error: {errors.title}</p>
                                 <h4>Category</h4>
                                 <p>{this.state.category}</p>
+                                <p style={!errors.category ? {display: "none"} : {display: "block"}}>Error: {errors.category}</p>
                                 <h4>Description</h4>
                                 <p>{this.state.description}</p>
+                                <p style={!errors.description ? {display: "none"} : {display: "block"}}>Error: {errors.description}</p>
                                 <h4>Languages</h4>
                                 <p>{this.state.languages_friendly}</p>
+                                <p style={!errors.languages ? {display: "none"} : {display: "block"}}>Error: {errors.languages}</p>
                                 <h4>Team Size</h4>
                                 <p>{this.state.teamSize}</p>
+                                <p style={!errors.teamSize ? {display: "none"} : {display: "block"}}>Error: {errors.teamSize}</p>
                                 <h4>Experience</h4>
                                 <p>{this.state.yearsOfExp}</p>
+                                <p style={!errors.yearsOfExp ? {display: "none"} : {display: "block"}}>Error: {errors.yearsOfExp}</p>
                                 <h4>Weekly Time Commitment</h4>
                                 <p>{this.state.time}</p>
+                                <p style={!errors.time ? {display: "none"} : {display: "block"}}>Error: {errors.time}</p>
                                 <Input type="submit" id="form-submit" value="Create my project" />
                                 <Tooltip placement="bottom" isOpen={this.state.tooltipOpen} toggle={this.toggle} target="form-submit">Project submission has errors. Please resolve before you can create your project.</Tooltip>
                             </TabPanel>

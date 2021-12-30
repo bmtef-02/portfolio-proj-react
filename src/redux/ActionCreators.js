@@ -39,7 +39,7 @@ export const addProject = project => ({
 });
 
 
-export const postProject = (title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id) => dispatch => {
+export const postProject = (title, category, teamSize, description, languages, yearsOfExp, time, owner_id) => dispatch => {
     const teamSizeNum = parseInt(teamSize, 10)
     const newProject = {
         title,
@@ -50,7 +50,6 @@ export const postProject = (title, category, teamSize, description, languages, y
         yearsOfExp,
         time,
         owner_id: 1,
-        team_id: []
     };
     newProject.date = new Date().toISOString();
 
@@ -81,7 +80,9 @@ export const postProject = (title, category, teamSize, description, languages, y
     });
 };
 
+export const joinTeam = (projectId, userId) => dispatch => {
 
+}
 
 
 export const projectsFailed = errMess => ({
