@@ -27,20 +27,6 @@ class Home extends Component {
 
         return(
             <React.Fragment>
-                {/* <Jumbotron className="home-jumbotron mb-5 jumboTest">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h1>Ready to Collaborate?</h1>
-                                <h2>Good.</h2>
-                            </div>
-                            <div classNam="col">
-                                    <button>Get Started</button>
-                                    <NavLink to="/search-results?s=&c=none">Search Results</NavLink>
-                            </div>
-                        </div>
-                    </div>
-                </Jumbotron> */}
                 <Container className="jumboContainer" fluid>
                     <Row className="jumboRow">
                         <Col xs="4">
@@ -56,7 +42,6 @@ class Home extends Component {
                     </Row>
                 </Container>
                 <JoinCreate />
-                {/* <SearchHome /> */}
                 <SearchHomeBJ />
                 <FeaturedProjects />
             </React.Fragment>

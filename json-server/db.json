@@ -56,7 +56,7 @@
     },
     {
       "id": 3,
-      "title": "Looking for Python and Google Cloud expert to automate functional ETL python script in Cloud Run",
+      "title": "Looking for Python and Google Cloud expert",
       "description": "I need assistance with migrating an ETL python script that currently runs locally to a cloud run an instance on GCP. The code is a simple main. py function. Code is currently in a private Github repo. I would like to have CI/CD with this GitHub repo. There may need to be some code updates to support HTTP (required for Cloud Run) and SARIMA therefore might need to be redesigned into a flask app.",
       "img": "img/...",
       "languages": [

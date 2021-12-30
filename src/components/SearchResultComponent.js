@@ -8,32 +8,40 @@ import { Loading } from './LoadingComponent'
 // This function returns each project and it's info as a Card
 function SearchResultItem({project}) {
 
-    // This function returns each languagae stored in each project object
-    const projectLang = project.languages.map(project => {
-        return (
-            <React.Fragment key={project.id}>
-                <Badge pill>{project}</Badge>{" "}
-            </React.Fragment>
-        )
-    });
+    let truncateDescription = "";
+
+    if (project.description.length > 150) {
+        truncateDescription = project.description.substring(0, 200) + "...";
+    } else {
+        truncateDescription = project.description;
+    }
 
     return(
-        <CardDeck className="mb-4 search-result-body" key={project.id}>
-            <Card className="scroll search-result-card" >
-                <Link className="text-reset text-decoration-none" to={`/projects/${project.id}`}>
-                    <CardImg variant="top" src="/assets/images/placeholder-img.jpg" height= "185"/>
-                    <CardBody>
-                        <CardTitle><h4>{project.title}</h4></CardTitle>
-                        <CardText>{project.description}</CardText>
-                        <div className="text-center">
-                            {projectLang}   {/* Lists all languages the project requires */}
-                            <Badge pill>{project.experience}</Badge>{" "}
-                            <Badge pill>{project.time}</Badge>
-                        </div>
-                    </CardBody>
-                </Link>
-            </Card>
-        </CardDeck>
+        <Col>
+            <Link to={`/projects/${project.id}`}>
+                <div>
+                    <img
+                        src="/assets/images/placeholder-img.jpg"
+                        className="featuredImg"
+                    />
+                </div>
+                <div>
+                    <h5 className="featuredHeaderProj">{project.title}</h5>
+                </div>
+                <div>
+                    <p>{truncateDescription}</p>
+                </div>
+                <Row className="featuredRowLang">
+                    {project.languages.map(language => {
+                        return (
+                            <Col className="featuredColLang" xs="auto">
+                                <Badge pill>{language}</Badge>
+                            </Col>
+                        )
+                    })}
+                </Row>
+            </Link>
+        </Col>
     );
 }
 
@@ -87,10 +95,8 @@ function SearchResult(props) {
     const filteredProjects = filterProjects(props.projects, query, cat);
     console.log(filteredProjects)
 
-    // const result_list = props.projects.filter(project => project.category === search_category)
     // This function maps through the PROJECTS array and passes each object to SearchResultItem
     const projects = filteredProjects.map(project => {
-
         return (
             <div key={project.id} className="col-xl-3 col-md-4 col-6">
                 <SearchResultItem project={project} />
@@ -121,9 +127,8 @@ function SearchResult(props) {
         <React.Fragment>
             <div>
                 <SearchBar class="remove-margin" />
-                {/* <SearchFilter class="remove-margin" /> */}
             </div>
-            <div className="row">
+            <div className="row" style={{backgroundColor: "white"}}>
                 {projects}
             </div>
         </React.Fragment>
