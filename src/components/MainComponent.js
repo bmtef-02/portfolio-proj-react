@@ -12,7 +12,7 @@ import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 // import { USERS } from '../shared/users'
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
-import { fetchProjects, fetchUsers, postProject } from '../redux/ActionCreators';
+import { fetchProjects, fetchUsers, postProject, joinTeam } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -24,7 +24,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     fetchProjects: () => (fetchProjects()),
     fetchUsers: () => (fetchUsers()),
-    postProject: (title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id) => (postProject(title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id))
+    postProject: (title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id) => (postProject(title, category, teamSize, description, languages, yearsOfExp, time, owner_id, team_id)),
 };
 
 class Main extends Component {

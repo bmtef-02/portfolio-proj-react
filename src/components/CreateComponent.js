@@ -441,7 +441,7 @@ class Create extends Component {
                                 <p>{this.state.time}</p>
                                 <p style={!errors.time ? {display: "none"} : {display: "block"}}>Error: {errors.time}</p>
                                 <Input type="submit" id="form-submit" value="Create my project" />
-                                <Tooltip placement="bottom" isOpen={this.state.tooltipOpen} toggle={this.toggle} target="form-submit">Project submission has errors. Please resolve before you can create your project.</Tooltip>
+                                {/* <Tooltip placement="bottom" isOpen={this.state.tooltipOpen} toggle={this.toggle} target="form-submit">Project submission has errors. Please resolve before you can create your project.</Tooltip> */}
                             </TabPanel>
                         </form>
                     </Tabs>

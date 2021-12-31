@@ -3,7 +3,13 @@ import { render } from 'react-dom';
 import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, CardTitle } from 'reactstrap';
 import { baseUrl } from '../shared/baseUrl';
 import { Loading } from '../components/LoadingComponent';
+import { joinTeam } from '../redux/ActionCreators';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
+const mapDispatchToProps = {
+    joinTeam: (projectId, userId) => (joinTeam(projectId, userId))
+}
 
 class Project extends Component {
     constructor(props) {
@@ -26,8 +32,6 @@ class Project extends Component {
         }
         const owner = this.props.users.filter(user=>this.props.project.owner_id === user.id)[0];
         const team_ids = this.props.project.team_id
-        console.log("Project ID: " + this.props.project.id)
-        console.log("Team IDs: " + team_ids)
         const team = [];
             for (let i=0; i<team_ids.length; i++) {
                 for (let j=0; j<this.props.users.length; j++) {
@@ -98,7 +102,7 @@ class Project extends Component {
                                 <h3 className="text-center">Project Team (Spots: {this.props.project.teamSize})</h3>
                                 <ul class="list-group list-group-flush">
                                     <ProjectTeam team={team} />
-                                    <Open unoccupied={unoccupied} project_id={this.props.project.id} />
+                                    <Open unoccupied={unoccupied} project_id={this.props.project.id} joinTeam={this.props.joinTeam} team={this.props.project.team_id}/>
                                 </ul>
                             </Card>
                         </div>
@@ -132,10 +136,18 @@ function ProjectTeam({team}) {
     )
 }
 
-function Open({unoccupied, project_id}) {
-
+function Open({unoccupied, project_id, joinTeam, team}) {
+    console.log('Team passed into Open from props: ' + team);
     const testClick = () => {
-        alert('Project ID: ' + project_id + ' User ID: 2')
+        if(team.includes(2)) {
+            console.log('User already exists in team');
+            alert('You are already on this team!');
+        } else {
+            team.push(2);
+            console.log(team);
+            joinTeam(project_id, team);
+        }
+    
     }
 
     const op = unoccupied.map(() =>
@@ -166,4 +178,4 @@ function Languages({lang}) {
 }
 
 
-export default Project
+export default withRouter(connect(null, mapDispatchToProps)(Project));

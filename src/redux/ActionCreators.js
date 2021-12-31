@@ -81,9 +81,36 @@ export const postProject = (title, category, teamSize, description, languages, y
 };
 
 export const joinTeam = (projectId, userId) => dispatch => {
+    console.log('joinTeam patch initiated')
 
-}
-
+    return fetch(baseUrl + 'projects/' + projectId, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            team_id: userId
+        })
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            const error = new Error(`Error  ${response.status}: ${response.statusText}`);
+            error.response = response;
+            throw error;
+            }
+        },
+        error => {throw error;}
+    )
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .then(response => alert('You have been added to the team!') + JSON.stringify(response))
+    .catch(error => {
+        console.log('Join Team error: ', error.message);
+        alert('You could not be added to the team\nError: ' + error.message);
+    });
+};
 
 export const projectsFailed = errMess => ({
     type: ActionTypes.PROJECTS_FAILED,
