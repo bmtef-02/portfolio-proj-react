@@ -3,18 +3,33 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const { MongoClient } = require('mongodb');
+// const { MongoClient } = require('mongodb');
+const mongoose = require('mongoose');
+const config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const uri = "mongodb+srv://bike:nucamp123@cluster0.iprmf.mongodb.net/codedb?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
+// const uri = config.mongoUrl
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+const url = config.mongoUrl;
+
+const connect = mongoose.connect(url, {
+  keepAlive: 1,
+  connectTimeoutMS: 30000,
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
+
+connect.then(() => console.log('Connected correctly to db'),
+  err => console.log(err)
+);
 
 var app = express();
 
