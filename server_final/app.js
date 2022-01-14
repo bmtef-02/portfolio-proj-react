@@ -3,9 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { MongoClient } = require('mongodb');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+const uri = "mongodb+srv://bike:nucamp123@cluster0.iprmf.mongodb.net/codedb?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 var app = express();
 
