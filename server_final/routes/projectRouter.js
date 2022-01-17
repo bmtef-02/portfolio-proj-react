@@ -1,6 +1,6 @@
 const express = require('express');
 const Project = require('../models/project');
-// const authenticate = require('../authenticate');
+const authenticate = require('../authenticate');
 
 const projectRouter = express.Router();
 
@@ -30,7 +30,7 @@ projectRouter.route('/')
     res.statusCode = 403;
     res.end('PUT operation not supported on /projects')
 })
-.delete( (req, res, next) => {     // deletes all documents in project collection
+.delete(authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
     Project.deleteMany()
     .then(response => {
         res.statusCode = 200;
