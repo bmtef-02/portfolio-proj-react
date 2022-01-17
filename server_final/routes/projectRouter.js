@@ -1,5 +1,6 @@
 const express = require('express');
 const Project = require('../models/project');
+// const authenticate = require('../authenticate');
 
 const projectRouter = express.Router();
 
@@ -29,23 +30,14 @@ projectRouter.route('/')
     res.statusCode = 403;
     res.end('PUT operation not supported on /projects')
 })
-
-/* 
-TO DO:
--make authenticate.js
-    -update user.js with passport-local-mongoose
-    -configure Passport, Passport-Local, JWT
-    -make verifyUser function
-    -make verifyAdmin function
-*/
-// .delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
-//     Project.deleteMany()
-//     .then(response => {
-//         res.statusCode = 200;
-//         res.setHeader('Content-Type', 'application/json');
-//         res.json(response);
-//     })
-//     .catch(err => next(err));
-// })
+.delete( (req, res, next) => {     // deletes all documents in project collection
+    Project.deleteMany()
+    .then(response => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(response);
+    })
+    .catch(err => next(err));
+})
 
 module.exports = projectRouter;
