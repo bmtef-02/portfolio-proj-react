@@ -9,6 +9,7 @@ const config = require('./config');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const projectRouter = require('./routes/projectRouter');
 
 // const uri = config.mongoUrl
 // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/projects', projectRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

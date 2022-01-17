@@ -3,7 +3,7 @@ const Project = require('../models/project');
 
 const projectRouter = express.Router();
 
-projectRoutuer.route('/')
+projectRouter.route('/')
 .get((req, res, next) => {  // Get all projects
     Project.find()
     .populate('owner')
@@ -38,12 +38,14 @@ TO DO:
     -make verifyUser function
     -make verifyAdmin function
 */
-.delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
-    Project.deleteMany()
-    .then(response => {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.json(response);
-    })
-    .catch(err => next(err));
-})
+// .delete(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
+//     Project.deleteMany()
+//     .then(response => {
+//         res.statusCode = 200;
+//         res.setHeader('Content-Type', 'application/json');
+//         res.json(response);
+//     })
+//     .catch(err => next(err));
+// })
+
+module.exports = projectRouter;
