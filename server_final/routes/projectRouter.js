@@ -42,6 +42,88 @@ projectRouter.route('/')
     .catch(err => next(err));
 });
 
+projectRouter.route('/:projectId')
+.get((req, res, next) => {
+    Project.findById(req.params.projectId)
+    .populate('owner')
+    .populate('teamIDs')
+    .then(project => {
+        res.statuscode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(project);
+    })
+    .catch(err => next(err));
+})
+.post((req, res) => {
+    res.statusCode = 403;
+    res.end(`POST operation not supported on /projects/${req.params.projectId}`);
+})
+.put((req, res, next) => {
+    Project.findById(req.params.projectId)
+    .then(project => {
+        if (project) {
+            if (project.owner.equals(req.body.user)) {
+                if (req.body.title) {
+                    project.title = req.body.title;
+                }
+                if (req.body.description) {
+                    project.description = req.body.description;
+                }
+                if (req.body.languages) {
+                    project.languages = req.body.languages;
+                }
+                if (req.body.category) {
+                    project.category = req.body.category;
+                }
+                if (req.body.teamSize) {
+                    project.teamSize = req.body.teamSize;
+                }
+                project.save()
+                .then(project => {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(project);
+                })
+                .catch(err => next(err));
+            } else {
+                err = new Error('You are not the owner of this project. You cannot make changes.');
+                err.status = 404;
+                return next(err);
+            }
+        } else {
+            err = new Error(`Project ${req.params.projectId} not found`);
+            err.status = 404;
+            return next(err);
+        }
+    })
+    .catch(err => next(err));
+})
+.delete((req, res, next) => {
+    Project.findById(req.params.projectId)
+    .then(project => {
+        if (project) {
+            if (project.owner.equals(req.body.user)) {
+                Project.findByIdAndDelete(req.params.projectId)
+                .then(response => {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(response);
+                })
+                .catch(err => next(err));
+            } else {
+                err = new Error('You are not the owner of this project. You cannot delete this project.');
+                err.status = 404;
+                return next(err);
+            }
+        } else {
+            err = new Error(`Project ${req.params.projectId} not found`);
+            err.status = 404;
+            return next(err);
+        }
+    })
+    .catch(err => next(err));
+})
+
 projectRouter.route('/:projectId/joinTeam')
 .options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
 .put(cors.corsWithOptions, (req, res, next) => {
