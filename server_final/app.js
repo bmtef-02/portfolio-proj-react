@@ -35,8 +35,14 @@ connect.then(() => console.log('Connected correctly to db'),
 
 var app = express();
 
-const hostname = 'localhost';
-const port = 3000;
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  } else {
+    console.log(`Redirecting to: https://${req.hostname}: ${app.get('secPort')}${req.url}`);
+    res.redirect(301, `https://${req.hostname}:${app.get('secPort')}${req.url}`);
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,7 +51,7 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 
@@ -69,8 +75,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+// app.listen(port, hostname, () => {
+//     console.log(`Server running at http://${hostname}:${port}/`);
+// });
 
 module.exports = app;

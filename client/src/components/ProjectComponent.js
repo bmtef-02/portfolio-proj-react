@@ -139,15 +139,30 @@ function ProjectTeam({team}) {
 function Open({unoccupied, project_id, joinTeam, team}) {
     console.log('Team passed into Open from props: ' + team);
     const testClick = () => {
-        if(team.includes(2)) {
-            console.log('User already exists in team');
-            alert('You are already on this team!');
-        } else {
-            team.push(2);
-            console.log(team);
-            joinTeam(project_id, team);
-        }
-    
+        console.log('Starting fetch');
+        return fetch('https://localhost:3443/projects/61e60c4de8e62d9530a69684/joinTeam', {
+            method: 'PUT',
+            body: JSON.stringify({
+                "user": "61e1385fff0d3627805f04c9"
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors'
+        })
+        .then(response => {
+            console.log(response);
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+        error => { throw error; }
+        )
+        .then(response => response.json())
     }
 
     const op = unoccupied.map(() =>

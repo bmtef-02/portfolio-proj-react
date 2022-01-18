@@ -1,11 +1,13 @@
 const express = require('express');
 const Project = require('../models/project');
 const authenticate = require('../authenticate');
+const cors = require('./cors');
 
 const projectRouter = express.Router();
 
 projectRouter.route('/')
-.get((req, res, next) => {  // Get all projects
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.get(cors.cors, (req, res, next) => {  // Get all projects
     Project.find()
     .populate('owner')
     .populate('teamIDs')
@@ -16,7 +18,7 @@ projectRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post((req, res, next) => {     // Create a new project
+.post(cors.corsWithOptions,(req, res, next) => {     // Create a new project
     Project.create(req.body)
     .then(project => {
         console.log('Project Create ', project);
@@ -26,11 +28,11 @@ projectRouter.route('/')
     })
     .catch(err => next(err));
 })
-.put((req, res) => {        // PUT not supported
+.put(cors.corsWithOptions, (req, res) => {        // PUT not supported
     res.statusCode = 403;
     res.end('PUT operation not supported on /projects')
 })
-.delete(authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
+.delete(cors.corsWithOptions, authenticate.verifyAdmin, (req, res, next) => {     // deletes all documents in project collection
     Project.deleteMany()
     .then(response => {
         res.statusCode = 200;
@@ -41,7 +43,8 @@ projectRouter.route('/')
 });
 
 projectRouter.route('/:projectId/joinTeam')
-.put((req, res, next) => {
+.options(cors.corsWithOptions, (req, res) => res.sendStatus(200))
+.put(cors.corsWithOptions, (req, res, next) => {
     Project.findById(req.params.projectId)
     .then(project => {
         console.log(project.owner._id);
