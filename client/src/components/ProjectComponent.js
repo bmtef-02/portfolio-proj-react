@@ -140,10 +140,10 @@ function Open({unoccupied, project_id, joinTeam, team}) {
     console.log('Team passed into Open from props: ' + team);
     const testClick = () => {
         console.log('Starting fetch');
-        return fetch('https://localhost:3443/projects/61e60c4de8e62d9530a69684/joinTeam', {
+        return fetch('https://localhost:3443/projects/61e63e90d306381820c95ffe/joinTeam', {
             method: 'PUT',
             body: JSON.stringify({
-                "user": "61e1385fff0d3627805f04c9"
+                "user": "61e65243d1e19739680f295c"
             }),
             headers: {
                 'Content-Type': 'application/json',
@@ -155,14 +155,16 @@ function Open({unoccupied, project_id, joinTeam, team}) {
                 if (response.ok) {
                     return response;
                 } else {
-                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    const error = new Error(`${response.statusText}`);
                     error.response = response;
                     throw error;
                 }
-            },
-        error => { throw error; }
-        )
-        .then(response => response.json())
+            })
+        .then(response => {
+            response.json();
+            alert("You've been added to the project!")
+        })
+        .catch(error => alert(error))
     }
 
     const op = unoccupied.map(() =>
