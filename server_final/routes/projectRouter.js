@@ -18,7 +18,7 @@ projectRouter.route('/')
     })
     .catch(err => next(err));
 })
-.post(cors.corsWithOptions,(req, res, next) => {     // Create a new project
+.post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {     // Create a new project
     Project.create(req.body)
     .then(project => {
         console.log('Project Create ', project);
