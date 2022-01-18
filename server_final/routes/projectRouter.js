@@ -38,6 +38,45 @@ projectRouter.route('/')
         res.json(response);
     })
     .catch(err => next(err));
+});
+
+projectRouter.route('/:projectId/joinTeam')
+.put((req, res, next) => {
+    Project.findById(req.params.projectId)
+    .then(project => {
+        console.log(project.owner._id);
+        console.log(req.body.user);
+        if (project) {
+            if (project.teamIDs.length >= project.teamSize) {
+                err = new Error('Team is already full. Cannot join.');
+                err.status = 404;
+                return next(err);
+            } else if (project.teamIDs.includes(req.body.user)) {
+                err = new Error('You are already a part of this team. Cannot join');
+                err.status = 404;
+                return next(err);
+            } else if (project.owner.equals(req.body.user)) {
+                err = new Error('You are the project owner. Cannot join');
+                err.status = 404;
+                return next(err);
+            } 
+            else {
+                project.teamIDs.push(req.body.user);
+                project.save()
+                .then(project => {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.json(project);
+                })
+                .catch(err => next(err));
+            }
+        } else {
+            err = new Error(`Project ${req.params.projectId} not found`);
+            err.status = 404;
+            return next(err);
+        }
+    })
+    .catch(err => next(err));
 })
 
 module.exports = projectRouter;
