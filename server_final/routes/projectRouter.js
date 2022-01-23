@@ -135,6 +135,9 @@ projectRouter.route('/:projectId/joinTeam')
             if (project.teamIDs.length >= project.teamSize) {
                 err = new Error('Team is already full. Cannot join.');
                 err.status = 404;
+                // console.log(err);
+                res.statusMessage = 'Team is already full. Cannot join';
+                res.statusCode = 404;
                 return next(err);
             } else if (project.teamIDs.includes(req.body.user)) {
                 err = new Error('You are already a part of this team. Cannot join');
