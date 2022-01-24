@@ -11,6 +11,7 @@ const passport = require('passport');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const projectRouter = require('./routes/projectRouter');
+const seedRouter = require('./routes/seed');
 
 // const uri = config.mongoUrl
 // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -65,6 +66,7 @@ app.use(passport.initialize());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/projects', projectRouter);
+app.use('/seed', seedRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
