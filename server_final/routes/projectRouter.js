@@ -154,10 +154,14 @@ projectRouter.route('/:projectId/joinTeam')
             } else if (project.teamIDs.includes(req.body.user)) {
                 err = new Error('You are already a part of this team. Cannot join');
                 err.status = 404;
+                res.statusMessage = 'You are already a part of this team. Cannot join';
+                res.statusCode = 404;
                 return next(err);
             } else if (project.owner.equals(req.body.user)) {
                 err = new Error('You are the project owner. Cannot join');
                 err.status = 404;
+                res.statusMessage = 'You are the project owner. Cannot join';
+                res.statusCode = 404;
                 return next(err);
             } 
             else {

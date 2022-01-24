@@ -16,6 +16,7 @@ router.get('/', cors.corsWithOptions, authenticate.verifyUser, authenticate.veri
   .catch(err => next(err));
 });
 
+
 router.post('/signup', cors.corsWithOptions, function(req, res, next) {
   User.findOne({ email: req.body.email })
   .then(user => {
