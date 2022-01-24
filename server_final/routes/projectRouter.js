@@ -2,6 +2,8 @@ const express = require('express');
 const Project = require('../models/project');
 const authenticate = require('../authenticate');
 const cors = require('./cors');
+const config = require('../config');
+const jwt = require('jsonwebtoken');
 
 const projectRouter = express.Router();
 
@@ -19,7 +21,17 @@ projectRouter.route('/')
     .catch(err => next(err));
 })
 .post(cors.corsWithOptions, authenticate.verifyUser, (req, res, next) => {     // Create a new project
-    Project.create(req.body)
+    const token = req.header('authorization').split(" ")[1];
+    const payload = jwt.verify(token, config.secretKey)
+    Project.create({
+        "title": req.body.title,
+        "description": req.body.description,
+        "teamSize": req.body.teamSize,
+        "category": req.body.category,
+        "languages": req.body.languages,
+        "yearsofExp": req.body.yearsofExp,
+        "owner": payload._id
+    })
     .then(project => {
         console.log('Project Create ', project);
         res.statusCode = 200;
